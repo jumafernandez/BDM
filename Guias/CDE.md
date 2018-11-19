@@ -33,89 +33,15 @@ En este caso, seleccionamos como origen de datos una consulta a una base de dato
 - URL de acceso -mediante el driver- a la Base de datos que vamos a consultar,
 - Query con la información que vamos a consultar y alimentar el componente.
 
+A continuación, vemos el editor del query SQL donde escribimos el query que recuperará la información que volcaremos en nuestro componente; es importante hacer notar que cada componente espera la información de una manera distinta. 
 
-Ejemplo: cómo armar un documento JSON para importar a la base.
+![Datasources CDE](./imgs/CDE-datasources-sql.png)
 
-```javascript
-    { 
-        "_id": 1,
-        "titulo": "Se estrelló un avión en Cuba",
-        "cuerpo": "La aeronave cayó a poco de despegar del aeropuerto de La Habana. Era un Boeing 737 de una compañía aérea subsidiaria de Cubana de Aviación. El presidente cubano Miguel Díaz-Canel se dirigió de inmediato al lugar del accidente.",
-        "fecha-hora": "2018-05-18 16:00:00"
-    }
-```
+En el caso de los gráficos de barra, que es el ejemplo que vamos a trabajar, el componente espera que le enviemos la información con una lista de etiquetas (leyenda de la barra) y un valor cuantitativo para cada etiqueta (alto de la barra).
 
-a) Incorporar un documento desde el shell
+## Paso 2: Configurando los componentes de nuestro Dashboard
+A continuación podemos ver la pantalla para la vista de la Capa de Componentes, la cual es muy similar a la vista de Datasources: a la izquierda los diferentes tipos de componentes (tablas, gráficos, etc), en el centro los componentes definidos organizados por tipo y a la derecha la configuración de los diferentes aspectos de cada componente (estos aspectos también varían de acuerdo al tipo).
 
-```javascript
-    db.documentos.insertOne({ 
-        "_id": 1,
-        "titulo": "Se estrelló un avión en Cuba",
-        "cuerpo": "La aeronave cayó a poco de despegar del aeropuerto de La Habana. Era un Boeing 737 de una compañía aérea subsidiaria de Cubana de Aviación. El presidente cubano Miguel Díaz-Canel se dirigió de inmediato al lugar del accidente.",
-        "fecha-hora": "2018-05-18 16:00:00"
-    })
-```    
-
-b) Buscar todos los documentos cargados en la colección.
-```javascript
-    db.documentos.find({})
-```
-
-c) Actualizar un atributo con __update__
-
-```javascript
-    db.documentos.update(
-        {"_id": 1},
-        {$set: {"titulo": "NOTICIA MODIFICADA EN DMUBA"}}
-    )
-```
-
-d) Eliminar un documento de la colección
-
-```javascript
-    db.documentos.deleteOne({"_id": 3})
-```
-    
-e) Incorporar varios documentos a través del shell
-
-Con la instrucción db.<mi colección>.insert([{doc1}, {doc2}, ...,])
-
-Ejemplo:
-
-```javascript
-    db.documentos.insert(
-    [
-        
-    {
-        "_id" : ObjectId("5af98a285987f909b4005ff3"),
-        "status_id" : "996013967498776577",
-        "created_at" : ISODate("2018-05-14T13:06:49.000Z"),
-        "user_id" : "213888080",
-        "screen_name" : "Florsube",
-        "text" : "@perroscalle  piel de gallina imaginando la situación de Alejandro!cada uno con sus montruos, jajaja, y nosotros preocupados por el dólar y la inflación! tiburón, qué buscas en la orilla?",
-        "source" : "Twitter Web Client",
-        "reply_to_user_id" : "76727519",
-        "reply_to_screen_name" : "perroscalle",
-        "is_quote" : false,
-        "is_retweet" : false,
-```
+![Componentes CDE](./imgs/CDE-components.png)
 
 El dataset de Tweets está disponible [acá](https://raw.githubusercontent.com/dmuba/dmuba.github.io/master/Practicos/guias/tweets-dolar.json).
-
-d) Utilizar operadores de comparación
-
-¿Cuantos tweets tienen más de un retweet?
-
-```javascript
-
-db.getCollection('tweets').find({retweet_count: {$gt: 1} })
-
-```
-Ver otros operadores [aquí](https://docs.mongodb.com/manual/reference/operator/query-comparison/)
-
-e) Utilizar búsquedas por cadenas
-
-¿Cuáles usuarios comienzan con P?
-
-    db.getCollection('tweets').find({screen_name: {$regex: "^P.*"} })
-
