@@ -1,9 +1,9 @@
-# Guía de LABORATORIO: Introducción a la creación de Dashboard con CDE (Pentaho)
+# Guía de LABORATORIO: Introducción a la creación de reportes con Report Designer (Pentaho)
 
-## Introducción a CDE
+## Introducción a Report Designer
 CDE (Community Dashboard Editor) es la herramienta de la Suite Pentaho para la creación y administración de dashboards. En esta guía vamos a ver un poco de la estructura de esta herramienta y la forma en que podemos utilizarla. Para información mas detallada podés ingresar [acá.](https://help.pentaho.com/Documentation/7.0/0R0/CTools/CDE_Dashboard_Overview)
 
-## Creación de dashboards con CDE
+## Creación de Reportes con Report Designer
 Para ingresar a CDE, debemos hacerlo a través de la Consola de Pentaho, y para ello previamente debemos haber iniciado el Pentaho Server.
 
 Una vez logueados en la Consola de Pentaho, debemos crear un __nuevo CDE Dashboard__:
