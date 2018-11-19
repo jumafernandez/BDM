@@ -43,3 +43,6 @@ En el caso de los gráficos de barra, que es el ejemplo que vamos a trabajar, el
 
 ## Paso 2: Configurando los componentes de nuestro Dashboard
 A continuación podemos ver la pantalla para la vista de la Capa de Componentes, la cual es muy similar a la vista de Datasources: a la izquierda los diferentes tipos de componentes (tablas, gráficos, etc), en el centro los componentes definidos organizados por tipo y a la derecha la configuración de los diferentes aspectos de cada componente (estos aspectos también varían de acuerdo al tipo).
+
+![Components CDE](./imgs/CDE-components.png)
+
