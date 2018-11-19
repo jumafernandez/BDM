@@ -46,3 +46,24 @@ A continuación podemos ver la pantalla para la vista de la Capa de Componentes,
 
 ![Components CDE](./imgs/CDE-components.png)
 
+Aquí debemos configurar, para nuestro gráfico de barras (CCC Bar Chart) debemos configurar, entre otros:
+- Nombre,
+- Título que aparecerá arriba del gráfico,
+- Datasource (origen de los datos que consumirá el componente),
+- Ancho & alto,
+- HtmlObject: esto es, el sector del dashboard donde se visualizará el componente y para ello, en la capa de Layout, debemos definir que uno de los sectores del layout tenga como nombre el nombre definido aquí para el objeto html del componente.
+
+## Paso 3: Organizando el layout de nuestro Dashboard
+Por último, definiremos la estructura de nuestro dashboard. El layout del dashboard estará organizado, de acuerdo a html, por filas y columnas y, a su vez, y todos los tipos de componentes que ya conocemos para html. 
+
+![Components CDE](./imgs/CDE-layout.png)
+
+Aquí debemos configurar, para nuestro gráfico de barras (CCC Bar Chart) debemos configurar, entre otros:
+- Nombre (aquí es donde debe coincidir con el nombre definido para HtmlObject del componente),
+- Atributos relacionados con el aspecto.
+
+## Previsualizando nuestro Dashboard
+Luego, podemos ir previsualizando el aspecto de nuestro dashboard con el ícono que tiene el ojo y hemos marcado con el círculo rojo:
+![Components CDE](./imgs/CDE-preview.png)
+
+Por último, para los amantes de R, podemos explorar las librerías __flexdashboards__ y __r2d3__ para la definición de dashboards interactivos. ^Para mas información, podemos empezar por [acá.](https://rmarkdown.rstudio.com/flexdashboard/) y [acá](https://rstudio.github.io/r2d3/articles/introduction.html)
