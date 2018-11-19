@@ -1,15 +1,12 @@
 # Guía de LABORATORIO: Introducción a la creación de reportes con Report Designer (Pentaho)
 
 ## Introducción a Report Designer
-CDE (Community Dashboard Editor) es la herramienta de la Suite Pentaho para la creación y administración de dashboards. En esta guía vamos a ver un poco de la estructura de esta herramienta y la forma en que podemos utilizarla. Para información mas detallada podés ingresar [acá.](https://help.pentaho.com/Documentation/7.0/0R0/CTools/CDE_Dashboard_Overview)
+Report Designer es la herramienta de reporting de la Suite Pentaho y es utilizada para la creación de reportes ad hoc. Dado que la definición de la estructura del reporte se realiza de forma separada de la definición de los datos del contenido, tiene la ventaja con respecto a los reportes ad hoc tradicionales que cualquier modificación en el origen de datos será reflejada en el informe de forma automática. Podemos acceder a información mas detallada de la herramienta ingresando [acá.](https://help.pentaho.com/Documentation/8.1/Products/Report_Designer)
 
 ## Creación de Reportes con Report Designer
-Para ingresar a CDE, debemos hacerlo a través de la Consola de Pentaho, y para ello previamente debemos haber iniciado el Pentaho Server.
+Para ingresar a Report Designer, debemos descomprimir la carpeta descargada desde la web de [Hitachi Vantara](https://community.hitachivantara.com/docs/DOC-1009856-pentaho-reporting) y ejecutar el archivo report-designer (.sh en Ubuntu y .bat en Windows) luego de configurar la variable JAVA_HOME como se explica [aquí.](https://www.dropbox.com/s/au05tj4qn63h8xx/GL00%20-%20Gu%C3%ADa%20de%20Instalaci%C3%B3n%20Suite%20Pentaho.pdf?dl=0)
 
-Una vez logueados en la Consola de Pentaho, debemos crear un __nuevo CDE Dashboard__:
-![crear dashBoard](./imgs/CDE-newDashboard.png)
-
-__Ejemplo de la Guia:__ En esta guía vamos a graficar los conceptos desarrollando un Dashboard muy simple que consistirá en un Gráfico de Barras que consumirá los datos a partir de una Base de Datos Postgresql con la cantidad de medios por especialidad.
+__Ejemplo de la Guia:__ En esta guía vamos a graficar los conceptos desarrollando un reporte con todos los medios de la provincia de Córdoba.
 
 ## Arquitectura de CDE Dashboard
 CDE dashboard tiene una arquitectura basada en capas, la cual se puede ver a continuación:
