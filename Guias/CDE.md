@@ -7,8 +7,7 @@ CDE (Community Dashboard Editor) es la herramienta de la Suite Pentaho para la c
 Para ingresar a CDE, debemos hacerlo a través de la Consola de Pentaho, y para ello previamente debemos haber iniciado el Pentaho Server.
 
 Una vez logueados en la Consola de Pentaho, debemos crear un __nuevo CDE Dashboard__:
-
-![crear db](./img/creardb.png)
+![crear dashBoard](./imgs/CDE-newDashboard.png)
 
 
 ## Crear una colección
