@@ -9,6 +9,8 @@ Para ingresar a CDE, debemos hacerlo a través de la Consola de Pentaho, y para 
 Una vez logueados en la Consola de Pentaho, debemos crear un __nuevo CDE Dashboard__:
 ![crear dashBoard](./imgs/CDE-newDashboard.png)
 
+__Ejemplo de la Guia:__ En esta guía vamos a graficar los conceptos desarrollando un Dashboard muy simple que consistirá en un Gráfico de Barras que consumirá los datos a partir de una Base de Datos Postgresql con la cantidad de medios por especialidad.
+
 ## Arquitectura de CDE Dashboard
 CDE dashboard tiene una arquitectura basada en capas, la cual se puede ver a continuación:
 ![Capas CDE](./imgs/CDE-capas.png)
