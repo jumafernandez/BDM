@@ -20,7 +20,19 @@ Las capas se explican someramente a continuación:
 
 Si bien es posible configurar las capas en cualquier orden, nosotros iremos desde abajo hacia arriba, primero configuraremos los orígenes de datos en la capa de de datasources, luego crearemos los componentes vinculándolos con los datasources de los cuales obtendrán los datos y por último armaremos el layout del dashboard para organizar los componentes que antes creamos.
 
-## OPERACIONES CRUD
+## Paso 1: Configurando los datasources de nuestro Dashboard
+A continuación podemos ver la pantalla para la vista de la Capa de Datasources donde podemos elegir los orígenes de datos a configurar (sobre la parte izquierda de la pantalla), verificar los datasources definidos (en el centro de la pantalla) y definir los diferentes aspectos del origen de datos (estos aspectos varían de acuerdo al tipo).
+
+![Datasources CDE](./imgs/CDE-datasources.png)
+
+En este caso, seleccionamos como origen de datos una consulta a una base de datos relacional -SQL Queries- y nos conectamos a partir de un conector JDBC. En estos casos, como puede verse en la pantalla, debemos configurar:
+- Nombre,
+- Driver (en este caso org.postgresql.Driver),
+- Clave del usuario DB,
+- Nombre del usuario DB,
+- URL de acceso -mediante el driver- a la Base de datos que vamos a consultar,
+- Query con la información que vamos a consultar y alimentar el componente.
+
 
 Ejemplo: cómo armar un documento JSON para importar a la base.
 
