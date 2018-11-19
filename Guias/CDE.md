@@ -9,22 +9,16 @@ Para ingresar a CDE, debemos hacerlo a través de la Consola de Pentaho, y para 
 Una vez logueados en la Consola de Pentaho, debemos crear un __nuevo CDE Dashboard__:
 ![crear dashBoard](./imgs/CDE-newDashboard.png)
 
-
 ## Arquitectura de CDE Dashboard
 CDE dashboard tiene una arquitectura basada en capas, la cual se puede ver a continuación:
 ![Capas CDE](./imgs/CDE-capas.png)
 
 Las capas se explican someramente a continuación:
 - __Datasources__: En esta capa se configuran los diferentes orígenes de datos que alimentarán a nuestro dashboard a través de los componentes. Aquí podemos configurar el acceso a datos de diferentes orígenes como bases de datos relacionales, bases de datos NoSQL, archivos de texto, cubos de un datawarehouse a través de consultas MDX y muchas otras fuentes de datos.
-- __Components__: 
-
+- __Components__: En esta capa vamos a configurar los componentes que formarán parte del Dashboard. Cuando hablamos de componentes nos referimos a los diferentes tipos de gráficos, tablas, información, entre otros, que en conjunto forman el dashboard. En resumen, todo lo que está en el dashboard es un componente. Estos componentes consumen la información desde los datasources que creamos antes y para ello debemos vincularlos.
+- __Layout__: En esta capa vamos a organizar la visualización de los componentes (configurados antes) que forman el dashboard así como el texto que lo acompaña. Tiene la misma estructura que el layout HTML -en esencia lo es- y podemos combinarlo con CSS.
 
 Si bien es posible configurar las capas en cualquier orden, nosotros iremos desde abajo hacia arriba, primero configuraremos los orígenes de datos en la capa de de datasources, luego crearemos los componentes vinculándolos con los datasources de los cuales obtendrán los datos y por último armaremos el layout del dashboard para organizar los componentes que antes creamos.
-
-Botón derecho sobre *collections* __Create Collection__
-
-![crear col](./img/crearcol.png)
-
 
 ## OPERACIONES CRUD
 
