@@ -1,8 +1,12 @@
-# Guía LABORATORIO III: Introducción a Bases de Datos NOSQL
+# Guía de LABORATORIO: Introducción a la creación de Dashboard con CDE (Pentaho)
 
-## Crear una db. 
-Con botón derecho sobre la conexión, __Create Database__
+## Introducción a CDE
+CDE (Community Dashboard Editor) es la herramienta de la Suite Pentaho para la creación y administración de dashboards. En esta guía vamos a ver un poco de la estructura de esta herramienta y la forma en que podemos utilizarla. Para información mas detallada podés ingresar [acá.](https://help.pentaho.com/Documentation/7.0/0R0/CTools/CDE_Dashboard_Overview)
 
+## Creación de dashboards con CDE
+Para ingresar a CDE, debemos hacerlo a través de la Consola de Pentaho, y para ello previamente debemos haber iniciado el Pentaho Server.
+
+Una vez logueados en la Consola de Pentaho, debemos crear un __nuevo CDE Dashboard__:
 
 ![crear db](./img/creardb.png)
 
