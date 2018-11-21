@@ -19,6 +19,7 @@ __Ejemplo de la Guia:__ En esta guía vamos a graficar los conceptos desarrollan
 
 ## Estructura de un Reporte
 Los reportes en general, y en Report Designer en particular, tienen las siguientes secciones:
+
 ![Report Designer Estructura](./imgs/rd-structure.png)
 
 Las secciones se explican a continuación:
@@ -27,14 +28,18 @@ Las secciones se explican a continuación:
 
 ## Paso 1: Configurando los datasources de nuestro Reporte
 Para configurar los datasources que serán consumidos para armar el reporte, debemos presionar el botón derecho sobre el ícono "Data Sets" de la pestaña Data (derecha de la pantalla).
+
 ![Report Designer Data](./imgs/rd-data.png)
 
 Luego, si por ejemplo deseamos conectarnos a una Base de datos relacional, el proceso será similar al que realizamos en CDE.
+
 ![Report Designer Datasource](./imgs/rd-datasource.png)
 
 A continuación, vemos el editor del query SQL donde escribimos el query que recuperará la información que volcaremos en nuestro reporte; es importante hacer notar que cada componente espera la información de una manera distinta. 
 Por un lado, para el listado de medios, vamos a seleccionar un conjunto de atributos de cada uno de los medios de la provincia de Santa Cruz:
+
 ![Report Designer query1](./imgs/rd-query1.png)
 
 Por el otro, en el caso del gráfico de torta, que es el ejemplo que vamos a trabajar, el componente espera que le enviemos la información con una lista de etiquetas (leyenda de la barra) y un valor cuantitativo para cada etiqueta (alto de la barra).
+
 ![Report Designer query2](./imgs/rd-query2.png)
