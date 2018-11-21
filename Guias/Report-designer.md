@@ -64,4 +64,8 @@ Por otro lado, creamos otro subreport para el gráfico que muestre la cantidad d
 
 Luego, como se ve en el gráfico, haciendo doble click en el componente vamos a configurar cual es el atributo que se asigna a la etiqueta y cual atributo se asigna como cantidad.
 
+Una vez que finalizamos el diseño de nuestro reporte podremos pre-visualizarlo o exportarlo a varios de los formatos mas conocidos como html, pdf, ods, etc...
+
+![Report Designer Preview](./imgs/rd-preview1.png)
+
 Hasta aquí un breve instructivo con la utilización de Report Designer de Pentaho.
