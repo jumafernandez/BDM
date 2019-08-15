@@ -66,4 +66,4 @@ Aquí debemos configurar, para nuestro gráfico de barras (CCC Bar Chart) debemo
 Luego, podemos ir previsualizando el aspecto de nuestro dashboard con el ícono que tiene el ojo y hemos marcado con el círculo rojo:
 ![Components CDE](./imgs/CDE-preview.png)
 
-Por último, para los amantes de R, podemos explorar las librerías __flexdashboards__ y __r2d3__ para la definición de dashboards interactivos. Para mas información, podemos empezar por [acá](https://rmarkdown.rstudio.com/flexdashboard/) y [acá.](https://rstudio.github.io/r2d3/articles/introduction.html)
+Por último, para los amantes de R, podemos explorar las librerías __shiny__(https://shiny.rstudio.com/), __flexdashboards__ y __r2d3__ para la definición de dashboards interactivos. Para mas información, podemos empezar por [acá](https://rmarkdown.rstudio.com/flexdashboard/) y [acá.](https://rstudio.github.io/r2d3/articles/introduction.html)
