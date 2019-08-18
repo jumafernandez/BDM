@@ -11,6 +11,13 @@ Los usos comunes de Pentaho Data Integration incluyen:
 - Integración de datos, incluida la capacidad de aprovechar ETL en tiempo real como fuente de datos para Pentaho Reporting.
 - Carga de datos en Data Warehouse con soporte integrado para dimensiones que cambian lentamente, con creación de claves subrogadas.
 
+## Conceptos básicos de Pentaho Data Integration (PDI)
+Pentaho Data Integration del PDI Client (Spoon) le permite crear dos tipos básicos de archivos:
+
+Las transformaciones se utilizan para realizar tareas ETL.
+Los trabajos se utilizan para orquestar actividades ETL, como definir el flujo y las dependencias para qué transformaciones de orden deben ejecutarse, o prepararse para la ejecución comprobando las condiciones.
+Las siguientes secciones describen cómo usar estas transformaciones y trabajos dentro de la perspectiva de integración de datos de Spoon.
+
 ## Creación de Reportes con Report Designer
 Para ingresar a Report Designer, debemos descomprimir la carpeta descargada desde la web de [Hitachi Vantara](https://community.hitachivantara.com/docs/DOC-1009856-pentaho-reporting) y ejecutar el archivo report-designer (.sh en Ubuntu y .bat en Windows) luego de configurar la variable JAVA_HOME como se explica [aquí.](https://www.dropbox.com/s/au05tj4qn63h8xx/GL00%20-%20Gu%C3%ADa%20de%20Instalaci%C3%B3n%20Suite%20Pentaho.pdf?dl=0)
 
