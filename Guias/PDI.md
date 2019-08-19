@@ -31,11 +31,12 @@ Así, las las transformaciones son el entorno de PDI donde las extracciones de d
 
 Típicamente, un __Proceso ETL (Extract, Transform and Load)__ estará conformado por un único __Job__, el cual coordinará la ejecución de todo el proceso, que integrará varias transformaciones -los flujos y transformaciones definidas en los datos- definidas para ese proceso. Una forma tradicional en la cual se define el agrupamiento de actividades existentes en cada transformación es utilizando la regla de utilizar _una transformación por cada tabla en la Base de Datos destino_.
 
+La lógica que explicamos antes no es únicamente válida para Pentaho Data Integration, sino que muchas de las herramientas de ETL respetan este paradigma. Otra opción interesante -que respeta este esquema de trabajo- de código abierto y con una versión gratuita es [Open Talend Studio](https://es.talend.com/products/talend-open-studio/).
 
 ## Utilización de PDI: Iniciando el camino hacia la integración de datos
 Para ingresar a Pentaho Data Integration, debemos descomprimir la carpeta descargada desde la web de [Hitachi Vantara](https://community.hitachivantara.com) y ejecutar el archivo spoon (.sh en Ubuntu y .bat en Windows) luego de configurar la variable JAVA_HOME como se explica [aquí.](https://www.dropbox.com/s/au05tj4qn63h8xx/GL00%20-%20Gu%C3%ADa%20de%20Instalaci%C3%B3n%20Suite%20Pentaho.pdf?dl=0)
 
-![Pantalla Report Designer](./imgs/PDI-screen.png)
+![Pantalla PDI](./imgs/PDI-screen.png)
 
 En la imagen se puede ver la distribución del home de la herramienta:
 - A la izquierda, los diferentes componentes que podemos incorporar en nuestro reporte.
@@ -44,7 +45,7 @@ En la imagen se puede ver la distribución del home de la herramienta:
   - La primera, "Structure", donde podemos ver los componentes definidos para cada sección de nuestro reporte y definir todas las cuestiones inherentes al formato.
   - La segunda, "Data", donde vamos a definir los orígenes de datos desde los cuales vamos a consumir la información para los reportes.
 
-__Ejemplo de la Guia:__ En esta guía vamos a graficar los conceptos desarrollando un reporte que liste y grafique (por especialidad) todos los medios de la provincia de Santa Cruz.
+__Ejemplo de la Guia:__ En esta guía vamos a graficar los conceptos desarrollando un proceso ETL muy simple que integre...
 
 ## Estructura de un Reporte
 Los reportes en general, y en Report Designer en particular, tienen las siguientes secciones:
