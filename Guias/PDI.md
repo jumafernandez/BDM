@@ -72,27 +72,8 @@ Como dijimos, en general utilizaremos un enfoque _bottom-up_, definiendo primero
 ![PDI Transformation](./imgs/PDI-transformation_final.png)
 
 ## Paso 2: Integrando y dando soporte a las transformaciones a través del Job
-Una vez configurados los orígenes de datos, vamos a avanzar en la renderización de nuestro reporte. Para ello, podemos insertar imágenes y labels como en casi cualquier otro editor de textos/reportes:
+Una vez definidas todas las transformaciones que formarán parte del Proceso ETL, vamos a integrarlas a partir de la definición de un __job__ cuyo objetivo es coordinar y administrar la ejecución del Proceso ETL brindando tareas de soporte como en este caso que enviará un correo al administrador cada vez que la ejecución falle. El esquema resultante es el siguiente:
 
-![Report Designer query2](./imgs/rd-labels.png)
+![PDI_Job](./imgs/PDI-job.png)
 
-## Paso 3: Creación de componentes
-Ahora, vamos a crear los componentes de nuestro reporte. Es importante hacer notar que si nuestro reporte va a tener mas de un componente, vamos a tener que asignar subreportes, uno por cada componente, dado que estos se configuran de manera individual en cada caso.
-
-Para la creación de subreports, debemos arrastrar el componente hacia el paño del reporte. Una vez que hagamos esto, vamos a manejar cada subreport como un reporte separado.
-
-Por ejemplo, si queremos crear nuestro reporte con el listado de medios de Santa Cruz debemos tomar los atributos del query generados antes y arrastrarlos hasta la sección "Details", del subreport creado antes. A su vez, definimos los encabezados del listado, en la sección "Report Header":
-
-![Report Designer Details](./imgs/rd-details.png)
-
-Por otro lado, creamos otro subreport para el gráfico que muestre la cantidad de medios por especialidad en un gráfico de barras. Luego, volcamos el componente dentro del subreport en la sección "Report Footer":
-
-![Report Designer Graph](./imgs/rd-graph.png)
-
-Luego, como se ve en el gráfico, haciendo doble click en el componente vamos a configurar cual es el atributo que se asigna a la etiqueta y cual atributo se asigna como cantidad.
-
-Una vez que finalizamos el diseño de nuestro reporte podremos pre-visualizarlo o exportarlo a varios de los formatos mas conocidos como html, pdf, ods, etc...
-
-![Report Designer Preview](./imgs/rd-preview1.png)
-
-Hasta aquí un breve instructivo con la utilización de Report Designer de Pentaho.
+Hasta aquí un breve instructivo con la utilización de Pentaho Data Integration, los archivos de datos utilizados, así como la transformation y el job definidos podés descargarlo de [acá]().
