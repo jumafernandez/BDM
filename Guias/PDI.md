@@ -25,7 +25,7 @@ Así, las las transformaciones son el entorno de PDI donde las extracciones de d
 
 - 
 
-![Ejemplo_Jobs](./imgs/PDI_jobs.png =400x620)
+![Ejemplo_Jobs](./imgs/PDI_jobs.png =400x)
 
 
 ## Utilización de PDI: Iniciando el camino hacia la integración de datos
