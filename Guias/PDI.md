@@ -39,24 +39,15 @@ Para ingresar a Pentaho Data Integration, debemos descomprimir la carpeta descar
 ![Pantalla PDI](./imgs/PDI-screen.png)
 
 En la imagen se puede ver la distribución del home de la herramienta:
-- A la izquierda, los diferentes componentes que podemos incorporar en nuestro reporte.
-- En el centro, el paño en blanco que representa nuestro reporte y es donde vamos a incorporar los componentes y las definiciones.
-- A la derecha podemos encontrar una columna con dos pestañas:
-  - La primera, "Structure", donde podemos ver los componentes definidos para cada sección de nuestro reporte y definir todas las cuestiones inherentes al formato.
-  - La segunda, "Data", donde vamos a definir los orígenes de datos desde los cuales vamos a consumir la información para los reportes.
+- A la izquierda se encuentra el panel de componentes (o potenciales nodos) con las diferentes funcionalidades que provee PDI para el consumo, transformación y carga de datos en las transformaciones y trabajos.
+- En el centro, si bien en la imagen precedente se observa el home de bienvenida, estará el paño en blanco que representa el entorno donde modelaremos nuestro grafos incorporando los steps y hops.
+- En la parte superior hay algunas opciones para la creación de archivos y conexión a orígenes de datos.
 
 __Ejemplo de la Guia:__ En esta guía vamos a graficar los conceptos desarrollando un proceso ETL muy simple que integre...
 
-## Estructura de un Reporte
-Los reportes en general, y en Report Designer en particular, tienen las siguientes secciones:
+En general, el proceso de diseño del Proceso ETL consiste en pensar lógicamente las diferentes transformaciones que serán parte del proceso, avanzar sobre la definición de las mismas y por último integrarlas en un job combinando las mismas con actividades de soporte (envío de correos, reportes de ejecución, aviso ante fallas, etc).
 
-![Report Designer Estructura](./imgs/rd-structure.png)
-
-Las secciones se explican a continuación:
-- __Page Header & Footer:__ Estas dos secciones representan los típicos encabezados y pies de páginas y suelen no modificarse a lo largo de un informe. En general, se utilizan para incorporar los logos institucionales, nombres de las áreas, números de páginas, fecha, etc.
-- __Report Header, Details & Footer:__ Estas tres secciones son utilizadas para organizar los elementos de cada reporte. En general, el encabezado es utilizado para explicar la misión del reporte con un título y una breve explicación, mientras que en details puede observarse información desagregada, generalmente a partir de una tabla o detalle a la vez que en el pie del reporte generalmente se presenta algún gráfico que pueda sintetizar esa información o complementarla.
-
-## Paso 1: Configurando los datasources de nuestro Reporte
+## Paso 1: Creación de las Transformaciones
 Para configurar los datasources que serán consumidos para armar el reporte, debemos presionar el botón derecho sobre el ícono "Data Sets" de la pestaña Data (derecha de la pantalla).
 
 ![Report Designer Data](./imgs/rd-data.png)
