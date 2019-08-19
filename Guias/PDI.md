@@ -33,9 +33,9 @@ Típicamente, un __Proceso ETL (Extract, Transform and Load)__ estará conformad
 
 
 ## Utilización de PDI: Iniciando el camino hacia la integración de datos
-Para ingresar a Report Designer, debemos descomprimir la carpeta descargada desde la web de [Hitachi Vantara](https://community.hitachivantara.com/docs/DOC-1009856-pentaho-reporting) y ejecutar el archivo report-designer (.sh en Ubuntu y .bat en Windows) luego de configurar la variable JAVA_HOME como se explica [aquí.](https://www.dropbox.com/s/au05tj4qn63h8xx/GL00%20-%20Gu%C3%ADa%20de%20Instalaci%C3%B3n%20Suite%20Pentaho.pdf?dl=0)
+Para ingresar a Pentaho Data Integration, debemos descomprimir la carpeta descargada desde la web de [Hitachi Vantara](https://community.hitachivantara.com) y ejecutar el archivo spoon (.sh en Ubuntu y .bat en Windows) luego de configurar la variable JAVA_HOME como se explica [aquí.](https://www.dropbox.com/s/au05tj4qn63h8xx/GL00%20-%20Gu%C3%ADa%20de%20Instalaci%C3%B3n%20Suite%20Pentaho.pdf?dl=0)
 
-![Pantalla Report Designer](./imgs/rd-screen.png)
+![Pantalla Report Designer](./imgs/PDI-screen.png)
 
 En la imagen se puede ver la distribución del home de la herramienta:
 - A la izquierda, los diferentes componentes que podemos incorporar en nuestro reporte.
