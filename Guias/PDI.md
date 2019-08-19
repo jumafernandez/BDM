@@ -23,9 +23,11 @@ Así, las las transformaciones son el entorno de PDI donde las extracciones de d
 
 ![Ejemplo_Steps_Hops](./imgs/PDI_steps_hops.png)
 
-- 
+- Los __jobs__ (trabajos) tiene la misma taxonomía que las transformaciones, pero con un nivel de abstracción mayor: permiten coordinar e integrar las transformaciones pre-existentes y complementarlas con actividades de soporte al Proceso ETL. Los trabajos incorporan esas piezas individuales de funcionalidad de las que antes hablamos para implementar el proceso completo. Los ejemplos de tareas comunes realizadas en un __job__ incluyen obtener archivos FTP, verificar condiciones como la existencia de una tabla de base de datos de destino necesaria, ejecutar una transformación que complete esa tabla y enviar un registro de error por correo electrónico si falla una transformación. El resultado final del trabajo podría ser una actualización nocturna de un Data Warehouse, por ejemplo.
 
 ![Ejemplo_Jobs](./imgs/PDI_jobs_redim.png)
+
+Típicamente, un __Proceso ETL (Extract, Transform and Load)__ estará conformado por un único __Job__, el cual coordinará la ejecución de todo el proceso, que integrará varias transformaciones -los flujos y transformaciones definidas en los datos- definidas para ese proceso. Una forma tradicional en la cual se define el agrupamiento de actividades existentes en cada transformación es utilizando la regla de utilizar _una transformación por cada tabla en la Base de Datos destino_.
 
 
 ## Utilización de PDI: Iniciando el camino hacia la integración de datos
