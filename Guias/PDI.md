@@ -53,30 +53,25 @@ __Ejemplo de la Guia:__ En esta guía vamos a graficar los conceptos desarrollan
 Como dijimos, en general utilizaremos un enfoque _bottom-up_, definiendo primero la/las transformaciones que transforman e integran cada flujo de datos y luego unificaremos este proceso a través de un job. En el caso del ejemplo de la guía, consiste en un ejercicio muy sencillo pero que nos permitirá entender los conceptos de PDI antes abordados. Nuestro caso de integración constará de una única transformación -conformada por un conjunto de steps y hops- y un único job. 
 
 1. Para crear una transformación debemos presionar sobre el extremo superior izquierdo -en el ícono con un documento y un signo "+"-,  eligiendo la opción __Transformation__. Una vez que creamos la transformación, aparecerá una nueva pestaña sobre el centro de la herramienta, con el paño en blanco y con el panel con las posibles actividades que podemos realizar a la izquierda de la pantalla.
-2. Estas actividades, que serán nuestros steps, están separadas por categoría de acuerdo a la funcionalidad y parte del proceso ETL al cual corresponde. De esta manera, los steps o componentes abocados a la Extracción (E de ETL) de los datos desde un origen de datos los encontraremos en la categoría _Entrada_. Tipicamente, las transformaciones casi siempre inicial con un step que extrae datos desde una o varias fuentes de información. En nuestro caso tendremos 3, 2 _CSV file input_ y 1 _Entrada Excel_.
-3. Cada componente requiere un conjunto de configuraciones distintas de acuerdo a su funcionalidad. En el caso de _CSV file input_ requiere que configuremos cual es el archivo a consumir, su ubicación y cuales son los campos que utilizaremos de ese archivo, pudiendo renombrarlos y cambiar su tipo de datos, entre otras configuraciones. El proceso es similar para _Entrada Excel_ donde además debemos escoger cua/cuales hojas de la Planilla utilizaremos.
+2. Estas actividades, que serán nuestros steps, están separadas por categoría de acuerdo a la funcionalidad y parte del proceso ETL al cual corresponde. De esta manera, los steps o componentes abocados a la Extracción (E de ETL) de los datos desde un origen de datos los encontraremos en la categoría _Entrada_. Tipicamente, las transformaciones casi siempre inicial con un step que extrae datos desde una o varias fuentes de información. En nuestro caso tendremos 3, 2 _CSV file input_ y 1 _Entrada Excel_, las cuales se arrastran al paño con la modalidad _drag & drop_.
+3. Cada componente requiere un conjunto de configuraciones distintas de acuerdo a su funcionalidad. En el caso de _CSV file input_ requiere que configuremos cual es el archivo a consumir, su ubicación y cuales son los campos que utilizaremos de ese archivo, pudiendo renombrarlos y cambiar su tipo de datos, entre otras configuraciones. El proceso es similar para _Entrada Excel_ donde además debemos escoger cua/cuales hojas de la Planilla utilizaremos. Accedemos a la configuración de cada componente presionando doble click sobre el step.
 
 ![PDI Transformation](./imgs/PDI-transformation_inicial.png)
 
 4. Una vez configuradas las E del Proceso ETL, avanzaremos sobre las transformaciones sobre los datos para la posterior integración:
-    - En primer lugar, lo que haremos -en la parte superior del grafo- es integrar en un único archivo los datos de los estudiantes del año 2011 y 2012, los cuales poseen el mismo formato.
-    - 
-![PDI Transformation](./imgs/PDI-ej_transformation.png)
+    - En primer lugar, lo que haremos -en la parte superior del grafo- es integrar en un único archivo los datos de los estudiantes del año 2011 y 2012, los cuales poseen el mismo formato. Para ello usamos el componente _Fundir Filas_ que está en la categoría _Uniones_ (todas las herramientas para uniones, joins, etc, se encuentran en esta categoría). La configuración es muy sencilla, solo requiere unir mediante hops los dos steps con los CSV a este nuevo que acabamos de crear y elegir el atributo de control de la unión para verificar que no existan repeticiones. 
+    - Para crear hops -aristas del grafo- nos paramos encima del step y elegimos el ícono del cuadrado con la flecha de salida y arrastramos la flecha que aparece hasta el step que queremos unir.
+    - Luego, haremos algunas transformaciones en los datos para poder realizar el join con el archivo de Carreras. Recordemos que tenemos el Código de Plan del Estudiante, y si a éste código lo dividimos por 100 y nos quedamos con la parte entera éste se convierte en el código de Carrera que es lo que necesitamos para _joiner_ ambos archivos. Para ello, renombramos los atributos (esto no es obligatorio), añadimos la constante 100 como columna del archivo y con el componente _Calculadora_ dividimos el Plan por 100 y nos quedamos con la parte entera. Todos estos componentes se encuentran en la categoría _Transformar_.
+5. A continuación, solo nos queda joiner ambos archivos por el Código de Carrera. Para esto utilizamos el componente _Unión por Clave_ de la categoría _Uniones_. Una limitación de este componente es que ambos archivos deben estar ordenados por el campo clave que se utilizará para el join, operación que realizamos con el componente _Ordenar Filas_. El flujo de trabajo (que corresponde a la T de ETL basicamente) debería quedar parecido al de la siguiente imagen:
+    
+![PDI Transformation](./imgs/PDI-transformation_intermedio.png)
 
-Luego, si por ejemplo deseamos conectarnos a una Base de datos relacional, el proceso será similar al que realizamos en CDE.
+5. Por último, solo nos queda cargar los datos en el destino de datos, en nuestro caso un archivo de texto. Para ello utilizaremos el componente _Salida Fichero de Texto_ que se encuentra en la categoría _Salida_.
+6. Una vez que culminamos el modelado de la transformación, podemos ejecutarla y debuggearla a través de los íconos que aparecen en la parte superior del paño de la transformación (ícono _Play_ para ejecutar). El resultado de la ejecución puede seguirse a partir de la ventana inferior central, donde aparecerán los eventuales errores que aparezcan.
 
-![Report Designer Datasource](./imgs/rd-datasource.png)
+![PDI Transformation](./imgs/PDI-transformation_final.png)
 
-A continuación, vemos el editor del query SQL donde escribimos el query que recuperará la información que volcaremos en nuestro reporte; es importante hacer notar que cada componente espera la información de una manera distinta. 
-Por un lado, para el listado de medios, vamos a seleccionar un conjunto de atributos de cada uno de los medios de la provincia de Santa Cruz:
-
-![Report Designer query1](./imgs/rd-query1.png)
-
-Por el otro, en el caso del gráfico de torta, que es el ejemplo que vamos a trabajar, el componente espera que le enviemos la información con una lista de etiquetas (leyenda de la barra) y un valor cuantitativo para cada etiqueta (alto de la barra).
-
-![Report Designer query2](./imgs/rd-query2.png)
-
-## Paso 2: Creando los labels del Reporte
+## Paso 2: Integrando y dando soporte a las transformaciones a través del Job
 Una vez configurados los orígenes de datos, vamos a avanzar en la renderización de nuestro reporte. Para ello, podemos insertar imágenes y labels como en casi cualquier otro editor de textos/reportes:
 
 ![Report Designer query2](./imgs/rd-labels.png)
