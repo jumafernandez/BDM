@@ -31,6 +31,8 @@ Así, las las transformaciones son el entorno de PDI donde las extracciones de d
 
 Típicamente, un __Proceso ETL (Extract, Transform and Load)__ estará conformado por un único __Job__, el cual coordinará la ejecución de todo el proceso, que integrará varias transformaciones -los flujos y transformaciones definidas en los datos- definidas para ese proceso. Una forma tradicional en la cual se define el agrupamiento de actividades existentes en cada transformación es utilizando la regla de utilizar _una transformación por cada tabla en la Base de Datos destino_.
 
+_Tips de utilización: En general, el proceso de diseño del Proceso ETL consiste en pensar lógicamente las diferentes transformaciones que serán parte del proceso, avanzar sobre la definición de las mismas y por último integrarlas en un job combinando las mismas con actividades de soporte (envío de correos, reportes de ejecución, aviso ante fallas, etc)_.
+
 La lógica que explicamos antes no es únicamente válida para Pentaho Data Integration, sino que muchas de las herramientas de ETL respetan este paradigma. Otra opción interesante -que respeta este esquema de trabajo- de código abierto y con una versión gratuita es [Open Talend Studio](https://es.talend.com/products/talend-open-studio/).
 
 ## Utilización de PDI: Iniciando el camino hacia la integración de datos
@@ -43,14 +45,14 @@ En la imagen se puede ver la distribución del home de la herramienta:
 - En el centro, si bien en la imagen precedente se observa el home de bienvenida, estará el paño en blanco que representa el entorno donde modelaremos nuestro grafos incorporando los steps y hops.
 - En la parte superior hay algunas opciones para la creación de archivos y conexión a orígenes de datos.
 
+
 __Ejemplo de la Guia:__ En esta guía vamos a graficar los conceptos desarrollando un proceso ETL muy simple que integre tres archivos -dos csv y un xlsx- en un único archivo de texto. La idea es integrar, por un lado, un grupo de estudiantes del año 2011 con otro grupo de 2012 en un único archivo donde ambos cuentan con el número de legajo, el plan de estudios, la sede y el año de ingreso. Luego, poder integrar esta información con la información correspondiente a su carrera (nombre y cantidad de materias) sabiendo que el código de plan de estudios determina el código de plan.
 
-En general, el proceso de diseño del Proceso ETL consiste en pensar lógicamente las diferentes transformaciones que serán parte del proceso, avanzar sobre la definición de las mismas y por último integrarlas en un job combinando las mismas con actividades de soporte (envío de correos, reportes de ejecución, aviso ante fallas, etc).
 
 ## Paso 1: Creación de las Transformaciones
-Para configurar los datasources que serán consumidos para armar el reporte, debemos presionar el botón derecho sobre el ícono "Data Sets" de la pestaña Data (derecha de la pantalla).
+Como dijimos, en general utilizaremos un enfoque _bottom-up_, definiendo primero la/las transformaciones que transforman en integran cada flujo de datos y luego unificaremos este proceso a través de un job. En el caso del ejemplo de la guía, consiste en un ejercicio muy sencillo pero que nos permitirá entender los conceptos de PDI antes abordados. Nuestro caso de integración constará de una única transformación -conformada por un conjunto de steps y hops- y un único job. Para crear una transformación debemos presionar sobre el extremo superior izquierdo -en el ícono con un documento y un signo "+"-, eligiendo la opción __Transformation__.
 
-![Report Designer Data](./imgs/rd-data.png)
+![PDI Transformation](./imgs/PDI-ej_transformation.png)
 
 Luego, si por ejemplo deseamos conectarnos a una Base de datos relacional, el proceso será similar al que realizamos en CDE.
 
