@@ -4,6 +4,8 @@
 Pentaho Data Integration (PDI) es la herramienta de integración de datos de la Suite Pentaho. La misma provee capacidades de Extracción, Transformación y Carga (ETL) para facilitar los procesos de captura, limpieza y almacenamiento de datos utilizando un formato uniforme.
 Podemos acceder a información mas detallada de la herramienta ingresando [acá.](https://help.pentaho.com/Documentation/8.3/Products/Pentaho_Data_Integration) Esta guía está basada en la documentación oficial de la herramienta.
 
+![PDI-Inicio](./imgs/PDI_inicio.png)
+
 Los usos comunes de Pentaho Data Integration incluyen:
 - Migración de datos entre diferentes bases de datos y aplicaciones.
 - Carga de grandes conjuntos de datos en bases de datos aprovechando al máximo los entornos de procesamiento en la nube.
