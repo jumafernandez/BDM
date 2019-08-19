@@ -52,16 +52,15 @@ __Ejemplo de la Guia:__ En esta guía vamos a graficar los conceptos desarrollan
 ## Paso 1: Creación de las Transformaciones
 Como dijimos, en general utilizaremos un enfoque _bottom-up_, definiendo primero la/las transformaciones que transforman e integran cada flujo de datos y luego unificaremos este proceso a través de un job. En el caso del ejemplo de la guía, consiste en un ejercicio muy sencillo pero que nos permitirá entender los conceptos de PDI antes abordados. Nuestro caso de integración constará de una única transformación -conformada por un conjunto de steps y hops- y un único job. 
 
-1. Para crear una transformación debemos presionar sobre el extremo superior izquierdo -en el ícono con un documento y un signo "+"-,  eligiendo la opción __Transformation__.
-2. Una vez que creamos la transformación, aparecerá una nueva pestaña sobre el centro de la herramienta, con el paño en blanco y con el panel con las posibles actividades que podemos realizar a la izquierda de la pantalla.
-3. Estas actividades, que serán nuestros steps, están separadas por categoría de acuerdo a la funcionalidad y parte del proceso ETL al cual corresponde. De esta manera, los steps o componentes abocados a la Extracción (E de ETL) de los datos desde un origen de datos los encontraremos en la categoría _Entrada_. Tipicamente, las transformaciones casi siempre inicial con un step que extrae datos desde una o varias fuentes de información. En nuestro caso tendremos 3, 2 _CSV file imput_ y 1 _Entrada Excel_.
-4. Cada componente requiere un conjunto de configuraciones distintas de acuerdo a su funcionalidad. En el caso de _CSV file imput_ requiere que configuremos cual es el archivo a consumir, su ubicación y cuales son los campos que utilizaremos de ese archivo, pudiendo renombrarlos y cambiar su tipo de datos, entre otras configuraciones. El proceso es similar para _Entrada Excel_ donde además debemos escoger cua/cuales hojas de la Planilla utilizaremos.
+1. Para crear una transformación debemos presionar sobre el extremo superior izquierdo -en el ícono con un documento y un signo "+"-,  eligiendo la opción __Transformation__. Una vez que creamos la transformación, aparecerá una nueva pestaña sobre el centro de la herramienta, con el paño en blanco y con el panel con las posibles actividades que podemos realizar a la izquierda de la pantalla.
+2. Estas actividades, que serán nuestros steps, están separadas por categoría de acuerdo a la funcionalidad y parte del proceso ETL al cual corresponde. De esta manera, los steps o componentes abocados a la Extracción (E de ETL) de los datos desde un origen de datos los encontraremos en la categoría _Entrada_. Tipicamente, las transformaciones casi siempre inicial con un step que extrae datos desde una o varias fuentes de información. En nuestro caso tendremos 3, 2 _CSV file input_ y 1 _Entrada Excel_.
+3. Cada componente requiere un conjunto de configuraciones distintas de acuerdo a su funcionalidad. En el caso de _CSV file input_ requiere que configuremos cual es el archivo a consumir, su ubicación y cuales son los campos que utilizaremos de ese archivo, pudiendo renombrarlos y cambiar su tipo de datos, entre otras configuraciones. El proceso es similar para _Entrada Excel_ donde además debemos escoger cua/cuales hojas de la Planilla utilizaremos.
 
-![PDI Transformation](./imgs/PDI-ej_transformation_inicial.png)
+![PDI Transformation](./imgs/PDI-transformation_inicial.png)
 
 4. Una vez configuradas las E del Proceso ETL, avanzaremos sobre las transformaciones sobre los datos para la posterior integración:
-- En primer lugar, lo que haremos -en la parte superior del grafo- es integrar en un único archivo los datos de los estudiantes del año 2011 y 2012, los cuales poseen el mismo formato.
-- 
+    - En primer lugar, lo que haremos -en la parte superior del grafo- es integrar en un único archivo los datos de los estudiantes del año 2011 y 2012, los cuales poseen el mismo formato.
+    - 
 ![PDI Transformation](./imgs/PDI-ej_transformation.png)
 
 Luego, si por ejemplo deseamos conectarnos a una Base de datos relacional, el proceso será similar al que realizamos en CDE.
