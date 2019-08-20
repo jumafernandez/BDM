@@ -76,4 +76,11 @@ Una vez definidas todas las transformaciones que formarán parte del Proceso ETL
 
 ![PDI_Job](./imgs/PDI-job.png)
 
-Hasta aquí un breve instructivo con la utilización de Pentaho Data Integration, los archivos de datos utilizados, así como la transformation y el job definidos podés descargarlo de [acá]().
+Como puede verse en la imagen anterior, además de la referencia a la transformación en el step central (en los jobs se denominan _entry_), se incorporaron un nodo de _START_ y otro de _Éxito_ ambos de la categoría _General_. Este esquema posee dos objetivos:
+1. Por un lado, la inclusión de estos dos componentes es parte de una convención y permite marcar claramente donde inicia y donde termina el proceso ETL.
+2. Por otro lado, el nodo _START_ permite programar la hora de ejecución de este proceso haciendo doble click sobre la _entry_.
+
+Asimismo, podemos ver otro concepto importante, la existencia de hops por la positiva (verdes) y hops por la negativa (rojos). Estos pueden entenderse como una bifurcación, siendo en este caso que cuando la _Transformation_ se haya ejecutado correctamente el flujo seguirá por el hop verde y terminará el proceso mientras que, cuando falle, el mismo ejecutará el hop rojo y enviará un correo al administrador.
+
+
+Hasta aquí un breve instructivo con la utilización de Pentaho Data Integration, los archivos de datos utilizados, así como la transformation y el job definidos podés descargarlo de [acá](https://github.com/jumafernandez/BDM/blob/master/Guias/utiles/Ejemplo-Proceso_ETL.zip).
