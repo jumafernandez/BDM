@@ -84,3 +84,21 @@ Asimismo, podemos ver otro concepto importante, la existencia de hops por la pos
 
 
 Hasta aquí un breve instructivo con la utilización de Pentaho Data Integration, los archivos de datos utilizados, así como la transformation y el job definidos podés descargarlo de [acá](https://github.com/jumafernandez/BDM/blob/master/Guias/utiles/Ejemplo-Proceso_ETL.zip).
+
+## Resumen
+
+- ETL: Extracción, Transformación y Carga
+
+- Workflow: Flujo de trabajo.
+
+- Steps (pasos): Nodo del grafo donde se ejecuta una tarea específica.
+
+- Hops (saltos): Se utilizan para conectar los steps, indican el sentido del flujo de datos.
+
+- Transformations (transformaciones): Conjunto de tareas (pasos enlazados con saltos) que ejecutan una transformación.
+
+- Jobs: Es similar a una transformación, pero con un nivel de abstracción mayor, sus pasos pueden tener transformaciones y otras tareas de mas alto nivel.
+
+- Enfoque bottom up: Empezar haciendo las transformaciones y despues el job que las une.
+
+![PDI_resumen](./imgs/PDI-resumen.png)
