@@ -1,0 +1,601 @@
+
+
+Preprocesamiento en R
+========================================================
+autosize: true
+width: 1200
+height: 800
+
+Limpieza, Reducción de Dimensionalidad, Transformación e Integración de datos
+<br />
+<br />
+Juan Manuel Fernandez
+<br />
+
+<br />
+Bases de Datos Masivas - UNLu
+<br />
+
+Preprocessing...
+========================================================
+
+<br />
+
+- Limpieza de datos
+  + Datos Faltantes
+  + Manejo de Ruido
+  + Detección de Outliers
+
+<br />
+
+- Integración de datos
+  + Diversas fuentes de datos
+  + Diferente representación
+
+***
+
+<br />
+
+- Reducción de dimensionalidad
+  + Atributos Correlacionados
+  + Test de Chi-Cuadrado
+  + Componentes Principales (PCA)
+
+<br />
+
+- Transformación de datos
+  + Discretización
+  + Normalización
+
+Datos Faltantes
+========================================================
+Vamos a ver algunos tips para implementar las siguientes técnicas en R:
+- Missing Values (Valores Faltantes)
+  + Análisis de Faltantes
+  + Registros completos
+  + Imputaciones (Media, Hot deck)
+  + Análisis gráfico de los métodos de imputación
+
+Análisis de Faltantes
+========================================================
+Cargamos iris y generamos datos faltantes aleatoriamente:
+```{r}
+for(i in 1:4) {
+  for(j in 1:5) {
+    inst.aleat<-sample(1:nrow(iris), 1, replace=F)
+    iris[inst.aleat, i]<-NA
+  }
+}
+```
+Podemos ver, por ejemplo, las instancias con que poseen faltante en una variable: 
+```{r}
+iris[is.na(iris$Sepal.Length),]
+```
+
+Análisis de Faltantes (++)
+========================================================
+<br />
+Podríamos contar la cantidad de faltantes para una variable:
+```{r}
+sum(is.na(iris$Sepal.Length))
+```
+<br />
+También podemos analizar la proporción de faltantes sobre el total de instancias:
+```{r}
+round(sum(is.na(iris$Sepal.Length))/nrow(iris)*100,2)
+```
+
+Valores Faltantes: Registros Completos
+========================================================
+Si quisieramos trabajar únicamente con las instancias del dataset con registros completos:
+```{r}
+iris.reg_completos<-na.omit(iris)
+nrow(iris.reg_completos)
+```
+Simplemente podemos realizar los cálculos removiendo los faltantes:
+```{r}
+print(mean(iris$Petal.Length))
+print(mean(iris$Petal.Length, na.rm = TRUE))
+```
+
+Valores Faltantes: Imputación por la Media
+========================================================
+<br />
+Seleccionamos las instancias con valor faltante y las reemplazamos por la media de ese atributo:
+```{r}
+# Sustitución por la media
+iris.imp<-iris
+iris.imp$media<-iris$Sepal.Length
+
+iris.imp$media[is.na(iris.imp$media)]<-mean(iris.imp$media, na.rm = TRUE)
+
+# Verificamos que no quedan faltantes
+sum(is.na(iris.imp$media))
+```
+
+Valores Faltantes: Imputación Hot Deck
+========================================================
+Para hot deck, vamos a utilizar la librería VIM.
+La función hotdeck imputará los datos directamente sobre el atributo del parámetro y generará un nuevo atributo -boolean- que indica las instancias imputadas:
+```{r}
+
+# Cargamos la librería
+library(VIM)
+
+# Definimos un dataframe auxiliar para no perder la variable original
+df_aux<-hotdeck(iris, variable="Sepal.Length")
+iris.imp$hotdeck<-df_aux$Sepal.Length
+iris.imp$hotdeckbool<-df_aux$Sepal.Length_imp
+
+# Verificamos que no existen faltantes
+sum(is.na(iris.imp$hotdeck))
+```
+
+Análisis Gráfico de los métodos de imputación
+========================================================
+Ahora, analizamos gráficamente la distribución original y su variación luego de realizar las imputaciones:
+
+```{r eval=FALSE}
+# Quitamos los atributos que no vamos a usar y renombramos Sepal.Length
+iris.imp<-iris.imp[,-c(2:5)]
+names(iris.imp)[1]<-"original"
+
+# Analisis grafico de los resultados
+plot(density(iris.imp$original, na.rm=TRUE), type = "l", col="red", ylab = "Original", ylim=c(0,0.5))
+lines(density(iris.imp$media, na.rm=TRUE), type = "l", col="blue")
+lines(density(iris.imp$hotdeck, na.rm=TRUE), type = "l", col="yellow")
+legend(7, 0.5, legend=c("Original", "Media", 'Hotdeck'), col=c("red", "blue", 'green','yellow', "black"), lty=1, cex=0.8)
+```
+
+Análisis Gráfico de los métodos de imputación (++)
+========================================================
+Obtenemos los siguientes gráficos de densidad:
+<center>
+```{r echo=FALSE}
+# Quitamos los atributos que no vamos a usar y renombramos Sepal.Length
+iris.imp<-iris.imp[,-c(2:5)]
+names(iris.imp)[1]<-"original"
+
+# Analisis grafico de los resultados
+plot(density(iris.imp$original, na.rm=TRUE), type = "l", col="red", ylab = "Original", ylim=c(0,0.5))
+lines(density(iris.imp$media, na.rm=TRUE), type = "l", col="blue")
+lines(density(iris.imp$hotdeck, na.rm=TRUE), type = "l", col="green")
+legend(7, 0.5, legend=c("Original", "Media", 'Hotdeck'), col=c("red", "blue", "green"), lty=1, cex=0.8)
+```
+
+</center>
+
+
+Limpieza de datos: Manejo de Ruido
+========================================================
+autosize:true
+En limpieza de ruido, vamos a trabajar con Binning por:
++ Frecuencias Iguales (Equal Freq)
++ Anchos Iguales (Equal Width)
+
+<br />
+Vamos a trabajar con el paquete infotheo para el binning y luego haremos las imputaciones en función del cálculo de la medida de tendencia central elegida
+
+Limpieza de datos: Manejo de Ruido
+========================================================
+autosize:true
+Manejo de Ruido por Binning: Equal Freq // Equal Width
+<center>
+```{r}
+library(infotheo)
+data("iris")
+# Discretize recibe el atributo, el método de binning y la cantidad de bins
+bin_eq_freq <- discretize(iris$Sepal.Width,"equalfreq", 5)
+
+# Nos copiamos el atributo original
+bin_eq_freq$Sepal.Width = iris$Sepal.Width
+
+# Por cada bin calculamos la media y reemplazamos en el atributo suavizado
+for(bin in 1:5){
+  bin_eq_freq$suavizado[ bin_eq_freq$X==bin] = mean(bin_eq_freq$Sepal.Width[ bin_eq_freq$X==bin])
+}
+```
+</center>
+
+Limpieza de datos: Manejo de Ruido (++)
+========================================================
+<center>
+```{r}
+# grafico Sepal.Width ordenado de menor a mayor
+plot(sort(iris$Sepal.Width,decreasing = FALSE) , type = "l", col="red", ylab = "Sepal.Width")
+# Agrego la serie suavizada
+lines(sort(bin_eq_freq$suavizado),type = "l", col="blue")
+```
+
+</center>
+
+Detección de Outliers
+========================================================
+- Análisis gráfico de outliers
+- Técnicas de detección y tratamiento de outliers
+  + Detección de outliers mediante Rango intercuartil
+  + Detección de outliers mediante desvíos de la media
+
+Limpieza de datos: Detección de Outliers
+========================================================
+Busquemos outliers en el atributo Road_55db del dataset ruidoso:
+<center>
+
+```{r}
+ruidoso=read.csv('ruidoso.txt')
+data = ruidoso$Road_55dB
+plot(sort(data, decreasing = FALSE))
+```
+</center>
+Hay outliers? Cuales?
+
+Análisis del atributo ruidoso$Road_55dB
+========================================================
+Observemos analíticamente la distribución de la variable:
+<br />
+Media:
+```{r}
+mean(data)
+```
+Mínimo:
+```{r}
+min(data)
+```
+Máximo:
+```{r}
+max(data)
+```
+
+Detección de outliers: Análisis gráfico (++)
+========================================================
+Mediante boxplot podemos observar gráficamente la distribución de la variable:
+<br />
+<center>
+```{r echo=FALSE} 
+knitr::include_graphics("boxplot.png")
+```
+</center>
+
+Un criterio de detección de outliers podría ser eliminar los datos que se encuentran por fuera (abajo/arriba) de los "bigotes".
+
+Análisis del atributo ruidoso$Road_55dB (++)
+========================================================
+Observemos gráficamente la distribución de la variable mediante boxplot:
+<br />
+<center>
+```{r}
+boxplot(data)
+```
+</center>
+
+Claramente, la distribución de la variable no es "normal", o si? Muchas veces los outliers "esconden" la distribución real de un feature.
+
+Detección de Outliers mediante IRQ
+========================================================
+- Detección de outliers mediante el IRQ*1,5 (Rango intercuartil)
+```{r}
+data.riq<-IQR(data)
+print(data.riq)
+```
+```{r}
+cuantiles<-quantile(data, c(0.25, 0.5, 0.75), type = 7)
+print(cuantiles)
+```
+
+Detección de Outliers mediante IRQ (++)
+========================================================
+Multiplicamos el cuantil 1 por 1.5 para determinar la barrera MENOR para la detección de outliers:
+<center>
+```{r}
+outliers_min<-as.numeric(cuantiles[1])-1.5*data.riq
+print(outliers_min)
+```
+</center>
+Y multiplicamos el cuantil 1 por 1.5 para determinar la barrera MAYOR para la detección de outliers:
+<center>
+```{r}
+outliers_max<-as.numeric(cuantiles[3])+1.5*data.riq
+print(outliers_max)
+```
+</center>
+
+Ruidoso$Road_55dB "sin" outliers
+========================================================
+```{r}
+plot(sort(data[data>outliers_min & data<outliers_max], decreasing = FALSE))
+```
+***
+```{r}
+boxplot(sort(data[data>outliers_min & data<outliers_max], decreasing = FALSE))
+```
+
+Detección de Outliers mediante Desvíos de la Media
+========================================================
+Otra alternativa es realizar detección de outliers utilizando alguna medida de tendencia central.
+<br />
+<br />
+Detección por N desvíos de la media (En el ejemplo N=3):
+```{r}
+N=3
+data<-ruidoso$Road_55dB
+desvio<-sd(data)
+print(desvio)
+```
+```{r}
+outliers_max<-mean(data)+N*desvio
+print(outliers_max)
+```
+```{r}
+outliers_min<-mean(data)-N*desvio
+print(outliers_min)
+```
+
+Ruidoso$Road_55dB "sin" outliers
+========================================================
+```{r}
+plot(sort(data[data>outliers_min & data<outliers_max], decreasing = FALSE))
+```
+***
+```{r}
+boxplot(sort(data[data>outliers_min & data<outliers_max], decreasing = FALSE))
+```
+
+Integración de datos de múltiples fuentes
+========================================================
+<small>
+Existen, varias operaciones para integrar datos, por ejemplo merge:
+```{r}
+productos<-data.frame(Codigo=c(45, 46), Denominacion=c("Licuadora", "TV 4k"), Precio=c(1245.10, 14742))
+head(productos)
+stock<-data.frame(Cod=c(45, 46), stock=c(8650, 145))
+dataset<-merge(productos, stock, by.x = "Codigo",  by.y = "Cod")
+head(dataset)
+```
+<br/>
+Bonus Track: Librerías sqldf y dplyr.
+
+Bonus Track para Integración/Manipulación de datos: sqldf y dplyr
+========================================================
+
+Con sqldf vamos a manipular los dataframes como si fueran tablas sql:
+```{r}
+library(sqldf)
+join_string = "SELECT Codigo, Denominacion, Precio, stock as Stock FROM productos p INNER JOIN stock s ON p.Codigo=s.Cod"
+sql_query = sqldf(join_string,stringsAsFactors = FALSE)
+head(sql_query)
+```
+Otra librería muy conocida de R para la manipulación de dataframes es dplyr:
+```{r}
+library(dplyr)
+data.dplyr = inner_join(productos, stock, by = c("Codigo" = "Cod"))
+head(data.dplyr)
+```
+</small>
+
+Integración de datos de múltiples fuentes (++)
+========================================================
+Además, como vimos antes, debemos tener en cuenta:
++ Diferentes nombres de atributos,
+```{r}
+names(stock)
+names(stock)[1]="Codigo"
+names(stock)
+```
+***
++ Diferente representación de los mismos datos,
+```{r}
+celsius=c(26,32)
+fahrenheit=(celsius*1.8)+32
+print(fahrenheit)
+```
++ Diferente granularidad.
+```{r}
+library(lubridate)
+fechas <- c(as.Date("2011-06-26"), as.Date("2013-07-15"))
+meses <- c(5, 8)
+todos <- cbind(meses, month(fechas))
+```
+
+Reducción de dimensionalidad
+========================================================
+
+Vamos a ver algunos tips para implementar las siguientes técnicas en R:
+  + Reducing Highly Correlated Columns
+  + Test de Chi-Cuadrado
+  + Análisis de Componentes Principales (PCA)
+
+Reducción dimensionalidad: Atrib. Correlacionados
+========================================================
+Primero debemos analizar si hay candidatos, podemos hacerlo gráficamente con un heatmap:
+```{r eval=FALSE}
+library(gplots)
+library(RColorBrewer)
+# Reducing Highly Correlated Columns
+dev.off()
+ds.cor=cor(iris[,-c(5)], use="complete.obs")
+heatmap.2(ds.cor,
+          cellnote = round(ds.cor,1), 
+          main = "Correlación",
+          notecol="black",     
+          density.info="none", 
+          trace="none",        
+          margins =c(12,12),    
+          col=brewer.pal('RdYlBu', n=5),  
+          dendrogram="none",     
+          Colv="NA")            
+```
+
+Reducción dimensionalidad: Atrib. Correlacionados
+========================================================
+El gráfico de heatmap presenta información sobre la correlación entre las variables, con colores de referencia:
+<center>
+<small>
+```{r echo=FALSE}
+library(gplots)
+library(RColorBrewer)
+# Reducing Highly Correlated Columns
+ds.cor=cor(iris[,-c(5)], use="complete.obs")
+heatmap.2(ds.cor,
+          cellnote = round(ds.cor,1), 
+          main = "Correlación",
+          notecol="black",     
+          density.info="none", 
+          trace="none",        
+          margins =c(12,12),    
+          col=brewer.pal('RdYlBu', n=5),  
+          dendrogram="none",     
+          Colv="NA")            
+```
+</small>
+</center>
+
+Atributos Correlacionados (++)
+========================================================
+Vamos a hacer el análisis "a mano" y con la librería "caret":
+```{r}
+data.numeric<-na.omit(iris[,-c(5)])
+
+# Calculo matriz de correlacion
+matriz.correlacion<-cor(data.numeric)
+
+# Verifico la Correlación con la matríz
+print(matriz.correlacion)
+```
+
+Atributos Correlacionados (+++)
+========================================================
+Ahora lo hacemos con la librería Caret:
+```{r}
+library(caret)
+
+# Buscamos atributos con correlaciones superiores a 0.75
+highlyCorrelated <- findCorrelation(matriz.correlacion, cutoff=0.75)
+
+# Imprimimos los nombres de los atributos que cumplen con la condición anterior
+print(names(data.numeric[,highlyCorrelated]))
+
+```
+Luego deberíamos analizar eliminar esos atributos.
+
+Test de Chi-Cuadrado
+========================================================
+autosize:true
+<small>
+En datos de tipo cualitativos/nominales: Test de Chi-Cuadrado
+<br />
+<br />
+Hacemos la tabla de contingencia:
+```{r}
+library(MASS)
+tbl_cont = table(survey$Smoke, survey$Exer)
+print(tbl_cont)
+```
+***
+<br />
+<br />
+<br />
+Luego aplicamos el Test de Chi-cuadrado:
+```{r}
+chisq.test(tbl_cont)
+```
+</small>
+
+Análisis de Componentes Principales
+========================================================
+
+```{r}
+data("iris")
+
+#Tomo los datos y les quito la clase
+iris.sin.clase <- iris[,-c(5)]
+iris.escalado <- data.frame(scale(iris.sin.clase))
+
+# Corro el análisis en CP
+pca.iris <- princomp(iris.escalado, cor=F)
+print(pca.iris)
+
+```
+
+Análisis de Componentes Principales (++)
+========================================================
+
+```{r}
+summary(pca.iris)
+
+```
+
+Análisis de Componentes Principales (+++)
+========================================================
+<center>
+```{r}
+plot(pca.iris, type="l")
+
+```
+</center>
+
+Análisis de Componentes Principales (++++)
+========================================================
+<center>
+```{r}
+par(mfrow=c(1,2))
+biplot(pca.iris)
+biplot(pca.iris, choices = c(3,4))
+
+```
+</center>
+
+Análisis de Componentes Principales (+++++)
+========================================================
+<center>
+```{r}
+loadings(pca.iris)
+
+```
+</center>
+
+
+Transformación de datos
+========================================================
+Las técnicas que vamos a trabajar en esta clase son las siguientes:
++ Discretización de datos
+```{r}
+library(infotheo)
+
+data("iris")
+
+# Armo los bins según Igual frecuencia
+bin_eq_freq <- discretize(iris$Sepal.Width,"equalfreq", 5)
+
+# Armo los bins según Igual frecuencia
+bin_eq_width <- discretize(iris$Sepal.Width,"equalwidth", 5)
+```
+
+<br />
+
+Transformación e datos (++)
+========================================================
++ Normalización (Por ejemplo a través de scale)
+```{r}
+
+valores.escalados <-scale(iris$Sepal.Width)
+
+valores.zscore<-(iris$Sepal.Width-mean(iris$Sepal.Width))/sd(iris$Sepal.Width)
+
+head(iris$Sepal.Width, n = 5)
+
+head(valores.escalados, n = 5)
+```
+
+<br />
+
+Detección de Outliers mediante Z-Score
+========================================================
+Otra variante es trabajar a través de la métrica de z-score:
+<b0r />
+<br />
+Cálculo de Z-Score:
+```{r}
+data<-ruidoso
+data$zscore<-(data$Road_55dB-mean(data$Road_55dB))/sd(data$Road_55dB)
+umbral<-2
+```
