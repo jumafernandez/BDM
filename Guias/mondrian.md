@@ -19,7 +19,7 @@ Para empezar con el desarrollo del cubo es necesario:
 
 ## Base de datos
 
-![texto](./Guias/imgs/sw_bd.png)
+![texto](./imgs/sw_bd.png)
 
 ## Aplicación
 
@@ -36,39 +36,39 @@ Para correr el programa desde la consola, hay que ejecutar la siguiente línea
 Lo primero que hay que configurar es la conexión, en el caso de utilizar otra base de datos, hay que descargar
 el correspondiente driver java y colocarlo en la carpeta schema-workbench/drivers
 
-![texto](./Guias/imgs/sw_0.png)
+![texto](./imgs/sw_0.png)
 
 Crear un schema desde la opción File -> New -> Schema
 
-![texto](./Guias/imgs/sw_1.png)
+![texto](./imgs/sw_1.png)
 
 Ponerle un nombre al schema
 
-![texto](./Guias/imgs/sw_2.png)
+![texto](./imgs/sw_2.png)
 
 Ahora vamos a definir una dimensión y ponerle un nombre
 
-![texto](./Guias/imgs/sw_3.png)
+![texto](./imgs/sw_3.png)
 
 Por defecto crea una jerarquía, dejarla sin nombre
 
-![texto](./Guias/imgs/sw_4.png)
+![texto](./imgs/sw_4.png)
 
 Vamos a agregar la tabla que corresponde a esta dimensión
 
-![texto](./Guias/imgs/sw_5.png)
+![texto](./imgs/sw_5.png)
 
 Si la conexión es correcta, nos despliega las tablas de la base de datos
 
-![texto](./Guias/imgs/sw_6.png)
+![texto](./imgs/sw_6.png)
 
 Ahora hay que agregar un nivel
 
-![texto](./Guias/imgs/sw_7.png)
+![texto](./imgs/sw_7.png)
 
 Acá vamos a relacionar la tabla de la dimensión, en el campo column va el identificador y el nameColumn el campo descripción de la tabla
 
-![texto](./Guias/imgs/sw_8.png)
+![texto](./imgs/sw_8.png)
 
 Esto lo hacemos con todas las dimensiones.
 
@@ -78,21 +78,21 @@ Una vez que terminamos, vamos a agregar el cubo con la tabla de hechos y sus rel
 
 Creamos un cubo y le ponemos el nombre de la tabla de hechos
 
-![texto](./Guias/imgs/sw_9.png)
+![texto](./imgs/sw_9.png)
 
 Creamos una tabla y seleccionamos la tabla de hechos
 
-![texto](./Guias/imgs/sw_10.png)
+![texto](./imgs/sw_10.png)
 
 Ahora vamos a relacionar las dimensiones que creamos anteriormente
 
 Seleccionamos la opcion dimension usage en vez de crear una normal, esto nos permite seleccionar las dimensiones que tenemos disponibles en el esquema
 
-![texto](./Guias/imgs/sw_11.png)
+![texto](./imgs/sw_11.png)
 
 Le ponemos le nombre, seleccionamos la foreign key de la tabla de hechos que apunta a la tabla de la dimensión y en source, seleccionamos la dimensión que creamos anteriormente
 
-![texto](./Guias/imgs/sw_12.png)
+![texto](./imgs/sw_12.png)
 
 Hacemos esto con todas las dimensiones que creamos en el esquema
 
@@ -100,27 +100,27 @@ Lo que falta es definir las medidas que va a tener el cubo, vamos a agregar una 
 
 Agregamos una medida
 
-![texto](./Guias/imgs/sw_13.png)
+![texto](./imgs/sw_13.png)
 
 En el campo agregator, seleccionamos la función que se va a calcular para este campo
 
-![texto](./Guias/imgs/sw_14.png)
+![texto](./imgs/sw_14.png)
 
 En el campo column, seleccionamos el campo con el que se va a realizar el cálculo, en este caso como sólo es contar, podría seleccionar cualquiera
 
-![texto](./Guias/imgs/sw_15.png)
+![texto](./imgs/sw_15.png)
 
 Ya tenemos el cubo listo para publicar
 
-![texto](./Guias/imgs/sw_16.png)
+![texto](./imgs/sw_16.png)
 
 Vamos a publicar el cubo
 
-![texto](./Guias/imgs/sw_17.png)
+![texto](./imgs/sw_17.png)
 
 Completamos los datos que apuntan al servidor de Pentaho y publicamos
 
-![texto](./Guias/imgs/sw_18.png)
+![texto](./imgs/sw_18.png)
 
 
 Driver MySQL
