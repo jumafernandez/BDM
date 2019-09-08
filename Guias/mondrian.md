@@ -17,6 +17,10 @@ Para empezar con el desarrollo del cubo es necesario:
 - Descargar Mondrian.
 - Instalar alguna base de datos y su correspondiente driver, en este ejemplo se va a utilizar MySQL.
 
+## Base de datos
+
+![texto](./Guias/imgs/sw_bd.png)
+
 ## Aplicación
 
 Para correr el programa desde la consola, hay que ejecutar la siguiente línea
@@ -24,6 +28,8 @@ Para correr el programa desde la consola, hay que ejecutar la siguiente línea
 - schema-workbench.bat
 
 ----
+
+
 
 ## Creación de un cubo
 
