@@ -13,11 +13,15 @@ Este esquema se llama ROLAP como vimos en las clases.
 Para empezar con el desarrollo del cubo es necesario:
 
 - Tener java instalado en la máquina (jdk de 64 bits, que ya viene con le jre).
-- Configurar las variables de entorno JAVA_HOME y JRE_HOME.
+- Configurar las variables de entorno JAVA_HOME (JDK) y JRE_HOME (JRE).
 - Descargar Mondrian.
-- Instalar alguna base de datos y su correspondiente driver, en este ejemplo se va a utilizar MySQL.
+- Instalar alguna base de datos y descargar su correspondiente driver, en este ejemplo se va a utilizar MySQL.
 
-## Base de datos
+## Configuración de las variables de entorno
+
+![texto](./imgs/sw_var.png)
+
+## Esquema de la Base de datos
 
 ![texto](./imgs/sw_bd.png)
 
@@ -122,14 +126,40 @@ Completamos los datos que apuntan al servidor de Pentaho y publicamos
 
 ![texto](./imgs/sw_18.png)
 
+En Pentaho, aparece el cubo que acabamos de publicar para poder realizar en un análisis
+
+![texto](./imgs/sw_19.png)
+
+Con la herramienta Saiku, podemos mezclar las dimensiones y ver como se calcula la medida
+
+![texto](./imgs/sw_20.png)
+
+Incluso podemos hacer gráficos con el mismo cruce de los datos
+
+![texto](./imgs/sw_21.png)
 
 Driver MySQL
 
 https://dev.mysql.com/downloads/connector/j/
 
-Documentación de Mondrian
+Java JDK
+
+https://www.oracle.com/java/technologies/jdk8-downloads.html
+
+Mondrian
 
 https://mondrian.pentaho.com/documentation/installation_es.php
+
 https://mondrian.pentaho.com/documentation/workbench.php
-https://help.pentaho.com/Documentation/8.1
+
 https://help.pentaho.com/Documentation/8.1/Products/Schema_Workbench
+
+Pentaho
+
+https://www.hitachivantara.com/go/pentaho.html
+
+https://help.pentaho.com/Documentation/8.1
+
+Saiku
+
+https://saiku-documentation.readthedocs.io/en/latest/
