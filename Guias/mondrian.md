@@ -113,59 +113,47 @@ Esta operatoria la repetiremos para cada una de las dimensiones creadas.
 
 Cuando llegamos a este punto, la definición de nuestro cubo ha sido completada. 
 
+![texto](./imgs/sw_16.png)
+
 ### Paso 2: Publicación del cubo en el Servidor Pentaho
 
 Ahora que ya hemos definido el cubo con sus dimensiones y métricas, necesitamos publicarlo en el _Pentaho Server_ para luego utilizarlo para su explotación mediante herramientas de análisis.
 
 1. Para publicar el cubo, debemos ingresar en la siguiente opción:
 
-![texto](./imgs/sw_16.png)
+![texto](./imgs/sw_17.png)
 
 2. Una vez que ingresamos a la opción, debemos completar las credenciales de acceso al Servidor Pentaho, las cuales consisten en la URL del servidor, el usuario y la clave. A su vez, también definimos el Data Source en el cual se publicará este nuevo cubo; pudiendo entender a un Data Source como un agrupamiento de cubos de una misma temática.
 
-![texto](./imgs/sw_17.png)
+![texto](./imgs/sw_18.png)
 
 ### Paso 3: Navegación del cubo con un Explorador OLAP (Saiku).
 
-![texto](./imgs/sw_18.png)
+Una vez que tengamos el cubo publicado, vamos a acceder a Saiku, a través del _Pentaho Server_ para explorarlo. Para ello, debemos ejecutar el archivo _start_pentaho.sh (Unix) o start_pentaho.bat (Windows)_ e ingresar mediante un Navegador Web a la URL del mismo. Si en el periodo de instalación no modificamos el puerto por defecto, el enlace es [localhost:8080/pentaho/]. Nos logueamos en el Servidor e ingresamos en la opción _File > New > Saiku Analytics_ > Create a new query. 
 
-
-En Pentaho, aparece el cubo que acabamos de publicar para poder realizar en un análisis
+Allí aparecerá el cubo que acabamos de publicar para poder realizar un análisis:
 
 ![texto](./imgs/sw_19.png)
 
-Con la herramienta Saiku, podemos mezclar las dimensiones y ver como se calcula la medida
+Con la herramienta Saiku, podemos cruzar múltiples dimensiones y ver como se calcula la medida:
 
 ![texto](./imgs/sw_20.png)
 
-Incluso podemos hacer gráficos con el mismo cruce de los datos
+Incluso podemos hacer gráficos sobre esos mismos cruces:
 
 ![texto](./imgs/sw_21.png)
 
-## Links
+A su vez, hay infinidad de opciones y alternativas para explotar la información organizacional a partir de éste Explorador OLAP pero retomaremos esta etapa hacia el final de la cursada cuando trabajemos con _Data Analytics_.
 
-Driver MySQL
 
-https://dev.mysql.com/downloads/connector/j/
+## Referencias a recursos complementarios
+- ![Driver MySQL](https://dev.mysql.com/downloads/connector/j/),
+- ![Driver PostgreSQL](https://jdbc.postgresql.org/download.html),
+- ![Java JDK](https://www.oracle.com/java/technologies/jdk8-downloads.html),
+- ![Documentación Oficial Mondrian #1](https://mondrian.pentaho.com/documentation/installation_es.php),
+- ![Documentación Oficial Mondrian #2](https://mondrian.pentaho.com/documentation/workbench.php),
+- ![Documentación Oficial Mondrian #3](https://help.pentaho.com/Documentation/8.1/Products/Schema_Workbench),
+- ![Pentaho Suite #1](https://www.hitachivantara.com/go/pentaho.html),
+- ![Pentaho Suite #2](https://help.pentaho.com/Documentation/8.1),
+- ![Documentación Saiku](https://saiku-documentation.readthedocs.io/en/latest/).
 
-Java JDK
-
-https://www.oracle.com/java/technologies/jdk8-downloads.html
-
-Mondrian
-
-https://mondrian.pentaho.com/documentation/installation_es.php
-
-https://mondrian.pentaho.com/documentation/workbench.php
-
-https://help.pentaho.com/Documentation/8.1/Products/Schema_Workbench
-
-Pentaho
-
-https://www.hitachivantara.com/go/pentaho.html
-
-https://help.pentaho.com/Documentation/8.1
-
-Saiku
-
-https://saiku-documentation.readthedocs.io/en/latest/
