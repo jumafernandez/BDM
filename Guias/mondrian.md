@@ -1,17 +1,13 @@
-# Guía de LABORATORIO: Definición de cubos multidimensionales con Pentaho Schema Workbench
+# Guía de LABORATORIO: Definición de cubos multidimensionales con Pentaho Schema Workbench (Mondrian)
 
 ## Introducción
 
-Mondrian es básicamente un archivo XML que define la base de datos multidimensional que hace de capa de abstracción y nos permite hacer querys MDX a una base de datos relacional.
-
-Schema-workbench es una herramienta visual para crear los cubos y publicarlos en el servidor de Pentaho para su uso.
-
-Este esquema se llama ROLAP como vimos en las clases.
+Mondrian Schema Workbench es una herramienta con una interfaz visual para crear cubos OLAP. El motor Mondrian luego procesa las solicitudes MDX contra esquemas ROLAP (Relacional OLAP, como vimos en clase). 
+La herramienta genera estos esquemas, a través de la denifición de modelos sobre los metadatos del esquema ROLAP en un archivo XML que consta de una estructura específica. Estos modelos XML pueden considerarse estructuras en forma de cubo que utilizan las tablas de hechos y dimensiones que se encuentran en el Sistema Gestor de Base de Datos Relacional utilizado (en el ejemplo que sigue será  MySQL). Como abordamos de forma teórica, los esquemas ROLAP no requieren que se construya o mantenga un cubo físico real; solo se crea el modelo de metadatos, que hace las veces de "cubo lógico".
 
 ## Requerimientos
 
 Para empezar con el desarrollo del cubo es necesario:
-
 - Tener java instalado en la máquina (jdk de 64 bits, que ya viene con le jre).
 - Configurar las variables de entorno JAVA_HOME (JDK) y JRE_HOME (JRE).
 - Descargar Mondrian.
