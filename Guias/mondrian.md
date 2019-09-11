@@ -49,41 +49,36 @@ Para el abordaje de los temas anteriores, vamos a trabajar a partir de un _esque
 
 ![texto](./imgs/sw_2.png)
 
-4. A continuación, vamos a comenzar por definir cada una de las dimensiones de nuestro Esquema. 
+__Muy importante:__ En este ejemplo, incorporaremos las dimensiones fuera del Cubo que vamos a definir dado que esto será beneficioso en esquemas más complejos en los que necesitamos más de un cubo y es probable que necesitemos compartir las dimensiones. Si definieramos las dimensiones dentro del cubo, deberíamos definirlas cada vez que creemos uno nuevo. 
+Si quisieramos definir las dimensiones dentro del cubo, previamente a la definición de las mismas crearemos el cubo a partir de la opción "Add cube" que aparece cuando presionamos click derecho sobre el Schema.
 
-__Muy importante: El caso que vamos a abordar consta de un Data Warehouse MUY simple que consta de un solo Cubo. En general, los DW se enfocan en múltiples aspectos de la organización y poseen mas de un Cubo. Para esos casos, iremos creando cubos que dependan del esquema a partir de la opción "Add cube" que aparece cuando presionamos click derecho sobre el Schema.__
-
-5. Realizada la salvedad anterior, vamos a trabajar, __en este caso__, directamente sobre el Schema definiendo las métricas y dimensiones del cubo. Iniciamos la definición a partir de las dimensiones:
+5. Realizada la salvedad anterior, vamos a trabajar directamente sobre el Schema (para luego poder compartir las dimensiones). Iniciamos la definición a partir de las dimensiones:
 
 ![texto](./imgs/sw_3.png)
 
-Por defecto crea una jerarquía, dejarla sin nombre
+6. Dado que podemos definir dimensiones jerárquicas -como vimos en la clase teóricas-, por defecto Mondrian crea una jerarquía. En este caso vamos a dejarla con el nombre por defecto:
 
 ![texto](./imgs/sw_4.png)
 
-Vamos a agregar la tabla que corresponde a esta dimensión
+7. Ahora debemos definir cual es la tabla de la Base de Datos Relacional que corresponde a la dimensión:
 
 ![texto](./imgs/sw_5.png)
 
-Si la conexión es correcta, nos despliega las tablas de la base de datos
+8. Vale aclarar que, si la conexión a la DB es correcta, la herramienta desplegará las tablas de la Base de Datos:
 
 ![texto](./imgs/sw_6.png)
 
-Ahora hay que agregar un nivel
+9. A continuación vamos a definir al menos un nivel (Level). Un nivel es cada uno de los atributos que representarán a una dimensión:
 
 ![texto](./imgs/sw_7.png)
 
-Acá vamos a relacionar la tabla de la dimensión, en el campo column va el identificador y el nameColumn el campo descripción de la tabla
+10. Aquí vamos a relacionar la tabla de la dimensión, en el campo _column_ va el identificador y el _nameColumn_ el campo descripción de la tabla:
 
 ![texto](./imgs/sw_8.png)
 
-Esto lo hacemos con todas las dimensiones.
+La operatoria anterior la haremos para todas las dimensiones del Ssquema.
 
-En este ejemplo, las dimensiones se agregan fuera del cubo que vamos a agregar porque en esquemas más complejos en los que necesitamos más de un cubo, es probable que necesitemos compartir las dimensiones, las que se definen dentro de los cubos son solamente para el cubo en cuestión
-
-Una vez que terminamos, vamos a agregar el cubo con la tabla de hechos y sus relaciones.
-
-Creamos un cubo y le ponemos el nombre de la tabla de hechos
+11. Una vez que terminamos, vamos a agregar el cubo con la tabla de hechos y sus relaciones. Para ello, creamos un cubo y definimos su nombre de la tabla de hechos:
 
 ![texto](./imgs/sw_9.png)
 
