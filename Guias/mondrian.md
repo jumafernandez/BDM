@@ -147,13 +147,13 @@ A su vez, hay infinidad de opciones y alternativas para explotar la información
 
 
 ## Referencias a recursos complementarios
-- ![Driver MySQL](https://dev.mysql.com/downloads/connector/j/),
-- ![Driver PostgreSQL](https://jdbc.postgresql.org/download.html),
-- ![Java JDK](https://www.oracle.com/java/technologies/jdk8-downloads.html),
-- ![Documentación Oficial Mondrian #1](https://mondrian.pentaho.com/documentation/installation_es.php),
-- ![Documentación Oficial Mondrian #2](https://mondrian.pentaho.com/documentation/workbench.php),
-- ![Documentación Oficial Mondrian #3](https://help.pentaho.com/Documentation/8.1/Products/Schema_Workbench),
-- ![Pentaho Suite #1](https://www.hitachivantara.com/go/pentaho.html),
-- ![Pentaho Suite #2](https://help.pentaho.com/Documentation/8.1),
-- ![Documentación Saiku](https://saiku-documentation.readthedocs.io/en/latest/).
+- [Driver MySQL](https://dev.mysql.com/downloads/connector/j/),
+- [Driver PostgreSQL](https://jdbc.postgresql.org/download.html),
+- [Java JDK](https://www.oracle.com/java/technologies/jdk8-downloads.html),
+- [Documentación Oficial Mondrian #1](https://mondrian.pentaho.com/documentation/installation_es.php),
+- [Documentación Oficial Mondrian #2](https://mondrian.pentaho.com/documentation/workbench.php),
+- [Documentación Oficial Mondrian #3](https://help.pentaho.com/Documentation/8.1/Products/Schema_Workbench),
+- [Pentaho Suite #1](https://www.hitachivantara.com/go/pentaho.html),
+- [Pentaho Suite #2](https://help.pentaho.com/Documentation/8.1),
+- [Documentación Saiku](https://saiku-documentation.readthedocs.io/en/latest/).
 
