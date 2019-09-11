@@ -3,21 +3,16 @@
 ## Introducción
 
 Mondrian Schema Workbench es una herramienta con una interfaz visual para crear cubos OLAP para luego procesar, a través del motor Mondrian, las solicitudes MDX contra esquemas ROLAP (Relacional OLAP, como vimos en clase). 
-
 La herramienta genera estos esquemas a través de la denifición de modelos sobre los metadatos del esquema ROLAP en un archivo XML que consta de una estructura específica. Estos modelos XML pueden considerarse estructuras en forma de cubo que utilizan las tablas de hechos y dimensiones que se encuentran en el Sistema Gestor de Base de Datos Relacional utilizado (en el ejemplo que sigue será  MySQL). 
 Como abordamos de forma teórica, los esquemas ROLAP no requieren que se construya o mantenga un cubo físico real; solo se crea el modelo de metadatos, que hace las veces de "cubo lógico".
 
 ## Requerimientos
 
 Para empezar con el desarrollo del cubo es necesario:
-- Tener java instalado en la máquina (jdk de 64 bits, que ya viene con le jre).
-- Configurar las variables de entorno JAVA_HOME (JDK) y JRE_HOME (JRE).
-- Descargar Mondrian.
-- Instalar alguna base de datos y descargar su correspondiente driver, en este ejemplo se va a utilizar MySQL.
-
-## Configuración de las variables de entorno
-
-![texto](./imgs/sw_var.png)
+- Tener Java instalado en la máquina (jdk de 64 bits, que ya viene con JRE).
+- Configurar las variables de entorno JAVA_HOME (JDK) y JRE_HOME (JRE) (Guía de Instalación Pentaho).
+- Descargar Mondrian Schema Workbench.
+- Instalar un SGBD relacional y descargar su correspondiente driver (en este ejemplo vamos a utilizar MySQL).
 
 ## Esquema de la Base de datos
 
