@@ -27,8 +27,9 @@ Para correr la aplicación, hay que ejecutar la siguiente línea:
 ## Creación y Navegación de Cubos OLAP a través de Mondrian y Saiku (Suite Pentaho) 
 
 El objetivo de esta guía es abordar los siguientes temas paso a paso:
-1. Definir un cubo a partir de Schema Workbench (Modelo ROLAP),
-2. Navegar el cubo con un Explorador OLAP (Saiku).
+1. Definición de un cubo a partir de Schema Workbench (Modelo ROLAP),
+2. Publicación del cubo en el Servidor Pentaho.
+3. Navegación del cubo con un Explorador OLAP (Saiku).
 
 Para el abordaje de los temas anteriores, vamos a trabajar a partir de un _esquema de estrella_ para un cubo que permitir realizar análisis respecto de algunas características de los Estudiantes de la UNLu. Como vamos a trabajar sobre un Modelo ROLAP, asumiremos que partimos de una Base de Datos Relacional de MySQL con la siguiente estructura:
 
@@ -52,77 +53,82 @@ Para el abordaje de los temas anteriores, vamos a trabajar a partir de un _esque
 __Muy importante:__ En este ejemplo, incorporaremos las dimensiones fuera del Cubo que vamos a definir dado que esto será beneficioso en esquemas más complejos en los que necesitamos más de un cubo y es probable que necesitemos compartir las dimensiones. Si definieramos las dimensiones dentro del cubo, deberíamos definirlas cada vez que creemos uno nuevo. 
 Si quisieramos definir las dimensiones dentro del cubo, previamente a la definición de las mismas crearemos el cubo a partir de la opción "Add cube" que aparece cuando presionamos click derecho sobre el Schema.
 
-5. Realizada la salvedad anterior, vamos a trabajar directamente sobre el Schema (para luego poder compartir las dimensiones). Iniciamos la definición a partir de las dimensiones:
+4. Realizada la salvedad anterior, vamos a trabajar directamente sobre el Schema (para luego poder compartir las dimensiones). Iniciamos la definición a partir de las dimensiones:
 
 ![texto](./imgs/sw_3.png)
 
-6. Dado que podemos definir dimensiones jerárquicas -como vimos en la clase teóricas-, por defecto Mondrian crea una jerarquía. En este caso vamos a dejarla con el nombre por defecto:
+5. Dado que podemos definir dimensiones jerárquicas -como vimos en la clase teóricas-, por defecto Mondrian crea una jerarquía. En este caso vamos a dejarla con el nombre por defecto:
 
 ![texto](./imgs/sw_4.png)
 
-7. Ahora debemos definir cual es la tabla de la Base de Datos Relacional que corresponde a la dimensión:
+6. Ahora debemos definir cual es la tabla de la Base de Datos Relacional que corresponde a la dimensión:
 
 ![texto](./imgs/sw_5.png)
 
-8. Vale aclarar que, si la conexión a la DB es correcta, la herramienta desplegará las tablas de la Base de Datos:
+7. Vale aclarar que, si la conexión a la DB es correcta, la herramienta desplegará las tablas de la Base de Datos:
 
 ![texto](./imgs/sw_6.png)
 
-9. A continuación vamos a definir al menos un nivel (Level). Un nivel es cada uno de los atributos que representarán a una dimensión:
+8. A continuación vamos a definir al menos un nivel (Level). Un nivel es cada uno de los atributos que representarán a una dimensión:
 
 ![texto](./imgs/sw_7.png)
 
-10. Aquí vamos a relacionar la tabla de la dimensión, en el campo _column_ va el identificador y el _nameColumn_ el campo descripción de la tabla:
+9. Aquí vamos a relacionar la tabla de la dimensión, en el campo _column_ va el identificador y el _nameColumn_ el campo descripción de la tabla:
 
 ![texto](./imgs/sw_8.png)
 
-La operatoria anterior la haremos para todas las dimensiones del Ssquema.
+La operatoria anterior la haremos para todas las dimensiones del Schema.
 
-11. Una vez que terminamos, vamos a agregar el cubo con la tabla de hechos y sus relaciones. Para ello, creamos un cubo y definimos su nombre de la tabla de hechos:
+10. Una vez que terminamos, vamos a agregar el cubo con la tabla de hechos y sus relaciones. Para ello, creamos un cubo y definimos su nombre, el cual en general coincidirá con el de la tabla de hechos:
 
 ![texto](./imgs/sw_9.png)
 
-Creamos una tabla y seleccionamos la tabla de hechos
+11. Relacionamos el cubo con la tabla de hechos, creando una tabla y seleccionando la tabla de hechos (en este caso _estudiantes_h_):
 
 ![texto](./imgs/sw_10.png)
 
-Ahora vamos a relacionar las dimensiones que creamos anteriormente
+12. Ahora vamos a relacionar las dimensiones que creamos anteriormente. Seleccionamos la opcion _dimension usage_ en vez de crear una normal, esto nos permite seleccionar las dimensiones que tenemos disponibles en el esquema y compartirlas con múltiples cubos.
 
-Seleccionamos la opcion dimension usage en vez de crear una normal, esto nos permite seleccionar las dimensiones que tenemos disponibles en el esquema
+Si hubieramos trabajado a partir de la definición de dimensiones por cada cubo, deberíamos realizar las operaciones de los puntos 4 a 9 tal cual lo mostramos aunque lo haríamos directamente sobre el cubo y no sobre el Schema.
 
 ![texto](./imgs/sw_11.png)
 
-Le ponemos le nombre, seleccionamos la foreign key de la tabla de hechos que apunta a la tabla de la dimensión y en source, seleccionamos la dimensión que creamos anteriormente
+14. Una vez seleccionada la opción _dimension usage_, definimos el nombre, seleccionamos la _foreign key_ de la tabla de hechos que apunta a esa tabla de la dimensión y en el campo _source_ seleccionamos la dimensión que creamos anteriormente sobre el schema.
 
 ![texto](./imgs/sw_12.png)
 
-Hacemos esto con todas las dimensiones que creamos en el esquema
+Esta operatoria la repetiremos para cada una de las dimensiones creadas.
 
-Lo que falta es definir las medidas que va a tener el cubo, vamos a agregar una que cuente la cantidad de alumnos.
-
-Agregamos una medida
+15. Por último, solo restan definir las métricas del cubo. En nuestro caso, la métrica es _cantidad_ y representa a la cantidad de estudiantes. Para ello agregamos una medida:
 
 ![texto](./imgs/sw_13.png)
 
-En el campo agregator, seleccionamos la función que se va a calcular para este campo
+16. Debemos definir el nombre en el atributo _name_ y en el campo _agregator_, seleccionamos la función de agregación que se aplicará sobre este campo:
 
 ![texto](./imgs/sw_14.png)
 
-En el campo column, seleccionamos el campo con el que se va a realizar el cálculo, en este caso como sólo es contar, podría seleccionar cualquiera
+17. A su vez, en el campo _column_, seleccionamos el campo con el que se va a realizar el cálculo, en este caso como sólo vamos a contar cantidad de registros (lo que llamamos un medida implícita en teoría), podriamos seleccionar cualquiera:
 
 ![texto](./imgs/sw_15.png)
 
-Ya tenemos el cubo listo para publicar
+Cuando llegamos a este punto, la definición de nuestro cubo ha sido completada. 
+
+### Paso 2: Publicación del cubo en el Servidor Pentaho
+
+Ahora que ya hemos definido el cubo con sus dimensiones y métricas, necesitamos publicarlo en el _Pentaho Server_ para luego utilizarlo para su explotación mediante herramientas de análisis.
+
+1. Para publicar el cubo, debemos ingresar en la siguiente opción:
 
 ![texto](./imgs/sw_16.png)
 
-Vamos a publicar el cubo
+2. Una vez que ingresamos a la opción, debemos completar las credenciales de acceso al Servidor Pentaho, las cuales consisten en la URL del servidor, el usuario y la clave. A su vez, también definimos el Data Source en el cual se publicará este nuevo cubo; pudiendo entender a un Data Source como un agrupamiento de cubos de una misma temática.
 
 ![texto](./imgs/sw_17.png)
 
-Completamos los datos que apuntan al servidor de Pentaho y publicamos
+### Paso 3: Navegación del cubo con un Explorador OLAP (Saiku).
 
 ![texto](./imgs/sw_18.png)
+
 
 En Pentaho, aparece el cubo que acabamos de publicar para poder realizar en un análisis
 
