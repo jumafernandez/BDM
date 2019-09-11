@@ -19,8 +19,8 @@ Para empezar con el desarrollo del cubo es necesario:
 ### Ejecución de Schema Workbench
 
 Para correr la aplicación, hay que ejecutar la siguiente línea:
-- schema-workbench.sh (Ambientes Unix),
-- schema-workbench.bat (Ambientes Windows).
+- workbench.sh (Ambientes Unix),
+- workbench.bat (Ambientes Windows).
 
 ----
 
@@ -37,20 +37,23 @@ Para el abordaje de los temas anteriores, vamos a trabajar a partir de un _esque
 
 ### Paso 1: Creación del cubo mediante Mondrian
 
-Lo primero que hay que configurar es la conexión, en el caso de utilizar otra base de datos, hay que descargar
-el correspondiente driver java y colocarlo en la carpeta schema-workbench/drivers
+1. Lo primero que debemos hacer es configurar es la conexión a la base de datos donde se encuentra nuestro modelo físico de la Base de Datos. En este caso, trabajaremos con MySQL, en el caso de utilizar otra base de datos debemos descargar el correspondiente driver Java y colocarlo en la carpeta __schema-workbench/drivers__. Accedemos a la configuración de la conexión de la Base de Datos a partir de la opción _Options > Connection..._ e ingresamos los datos correspondientes al acceso a la Base de Datos:
 
 ![texto](./imgs/sw_0.png)
 
-Crear un schema desde la opción File -> New -> Schema
+2. Una vez realizada la conexión, debemos crear el Esquema, para ello ingresamos desde la opción _File -> New -> Schema_. Aquí es importante hacer notar que un Schema es el ambiente del Data Warehouse y, como vimos en la clse teórica, un DW puede estar compuesto de múltiples cubos.
 
 ![texto](./imgs/sw_1.png)
 
-Ponerle un nombre al schema
+3. Luego, definimos el nombre que va a identificar a nuestro esquema (DW):
 
 ![texto](./imgs/sw_2.png)
 
-Ahora vamos a definir una dimensión y ponerle un nombre
+4. A continuación, vamos a comenzar por definir cada una de las dimensiones de nuestro Esquema. 
+
+__Muy importante: El caso que vamos a abordar consta de un Data Warehouse MUY simple que consta de un solo Cubo. En general, los DW se enfocan en múltiples aspectos de la organización y poseen mas de un Cubo. Para esos casos, iremos creando cubos que dependan del esquema a partir de la opción "Add cube" que aparece cuando presionamos click derecho sobre el Schema.__
+
+5. Realizada la salvedad anterior, vamos a trabajar, __en este caso__, directamente sobre el Schema definiendo las métricas y dimensiones del cubo. Iniciamos la definición a partir de las dimensiones:
 
 ![texto](./imgs/sw_3.png)
 
