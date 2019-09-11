@@ -22,16 +22,20 @@ Para correr la aplicación, hay que ejecutar la siguiente línea:
 - schema-workbench.sh (Ambientes Unix),
 - schema-workbench.bat (Ambientes Windows).
 
-## Esquema de la Base de datos a utilizar en esta Guía
+----
+
+## Creación y Navegación de Cubos OLAP a través de Mondrian y Saiku (Suite Pentaho) 
+
+El objetivo de esta guía es abordar los siguientes temas paso a paso:
+1. Definir un cubo a partir de Schema Workbench (Modelo ROLAP),
+2. Navegar el cubo con un Explorador OLAP (Saiku).
+
+Para el abordaje de los temas anteriores, vamos a trabajar a partir de un _esquema de estrella_ para un cubo que permitir realizar análisis respecto de algunas características de los Estudiantes de la UNLu. Como vamos a trabajar sobre un Modelo ROLAP, asumiremos que partimos de una Base de Datos Relacional de MySQL con la siguiente estructura:
 
 ![texto](./imgs/sw_bd.png)
 
 
-----
-
-
-
-## Creación de un cubo
+### Paso 1: Creación del cubo mediante Mondrian
 
 Lo primero que hay que configurar es la conexión, en el caso de utilizar otra base de datos, hay que descargar
 el correspondiente driver java y colocarlo en la carpeta schema-workbench/drivers
