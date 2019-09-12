@@ -12,7 +12,7 @@ Como abordamos de forma teórica, los esquemas ROLAP no requieren que se constru
 
 Para empezar con el desarrollo del cubo es necesario:
 - Tener Java instalado en la máquina (jdk de 64 bits, que ya viene con JRE).
-- Configurar las variables de entorno JAVA_HOME (JDK) y JRE_HOME (JRE) (![Anexo I: Guía de Instalación Pentaho](https://github.com/jumafernandez/BDM/blob/master/Guias/Gu%C3%ADa%20de%20Instalaci%C3%B3n%20Suite%20Pentaho.pdf)).
+- Configurar las variables de entorno JAVA_HOME (JDK) y JRE_HOME (JRE) ([Anexo I: Guía de Instalación Pentaho](https://github.com/jumafernandez/BDM/blob/master/Guias/Gu%C3%ADa%20de%20Instalaci%C3%B3n%20Suite%20Pentaho.pdf)).
 - Descargar Mondrian Schema Workbench.
 - Instalar un SGBD relacional y descargar su correspondiente driver (en este ejemplo vamos a utilizar MySQL).
 
