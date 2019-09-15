@@ -129,7 +129,21 @@ Ahora que ya hemos definido el cubo con sus dimensiones y métricas, necesitamos
 
 ### Paso 3: Navegación del cubo con un Explorador OLAP (Saiku).
 
-Una vez que tengamos el cubo publicado, vamos a acceder a Saiku, a través del _Pentaho Server_ para explorarlo. Para ello, debemos ejecutar el archivo _start_pentaho.sh (Unix) o start_pentaho.bat (Windows)_ e ingresar mediante un Navegador Web a la URL del mismo. Si en el periodo de instalación no modificamos el puerto por defecto, el enlace es [localhost:8080/pentaho/]. Nos logueamos en el Servidor e ingresamos en la opción _File > New > Saiku Analytics_ > Create a new query. 
+Una vez que tengamos el cubo publicado, vamos a acceder a Saiku, a través del _Pentaho Server_ para explorarlo. Para ello, debemos ejecutar el archivo _start_pentaho.sh (Unix) o start_pentaho.bat (Windows)_ e ingresar mediante un Navegador Web a la URL del mismo. Si en el periodo de instalación no modificamos el puerto por defecto, el enlace es [localhost:8080/pentaho/].
+
+Nos logueamos en el Servidor e ingresamos a la opción _Manage Data Sources_.
+
+![texto](./imgs/sw_22.png)
+
+Agregamos una nueva conexión:
+
+![texto](./imgs/sw_23.png)
+
+Y colocamos los mismos datos que usamos para la conexión con Mondrian, es importante que el _Connection name_ sea el mismo.
+
+![texto](./imgs/sw_24.png)
+
+Ingresamos a la opción _File > New > Saiku Analytics_ > Create a new query. 
 
 Allí aparecerá el cubo que acabamos de publicar para poder realizar un análisis:
 
