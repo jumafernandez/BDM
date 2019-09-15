@@ -4,13 +4,13 @@
 Con botón derecho sobre la conexión, __Create Database__
 
 
-![crear db](./images/Mongo-creardb.png)
+![crear db](./imgs/Mongo-creardb.png)
 
 
 ## Crear una colección
 Botón derecho sobre *collections* __Create Collection__
 
-![crear col](./images/Mongo-crearcol.png)
+![crear col](./imgs/Mongo-crearcol.png)
 
 
 ## OPERACIONES CRUD
