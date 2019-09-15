@@ -47,7 +47,7 @@ c) Actualizar un atributo con __update__
 ```javascript
     db.documentos.update(
         {"_id": 1},
-        {$set: {"titulo": "NOTICIA MODIFICADA EN DMUBA"}}
+        {$set: {"titulo": "NOTICIA MODIFICADA EN UNLu"}}
     )
 ```
 
