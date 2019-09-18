@@ -149,7 +149,7 @@ La forma de utilización es mediante el comando _mongoimport_ es la siguiente de
 Sistemas Operativos UNIX:
 ```javascript
 
-$ mongoimport --host localhost --port 27017 --username user --password "pass" --collection dolar --db twitter --file /home/juan/Escritorio/dolar.json
+$ mongoimport --host localhost --port 27017 --username user --password "pass" --collection tweets --db dolar --file /home/juan/Escritorio/dolar.json
 
 ```
 
