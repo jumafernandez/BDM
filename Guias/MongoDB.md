@@ -156,6 +156,6 @@ $ mongoimport --host localhost --port 27017 --username user --password "pass" --
 Sistemas Operativos Windows:
 ```javascript
 
-> mongoimport --host localhost --port 27017 --collection dolar --db twitter_20190918 --file C:\Users\unlu\dolar.json
+> mongoimport --host localhost --port 27017 --collection tweets --db dolar --file C:\Users\unlu\dolar.json
 
 ```
