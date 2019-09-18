@@ -1,19 +1,25 @@
 # Guía LABORATORIO III: Introducción a Bases de Datos NOSQL
 
-## Crear una db. 
+## Creación de "esquemas" con MongoDB con Robo3T
+
+A continuación se presentan algunas operaciones básicas de gestión de Bases de Datos con MongoDB a través de la interfaz Robo3T.
+
+### Crear una db. 
 Con botón derecho sobre la conexión, __Create Database__
 
 
 ![crear db](./imgs/Mongo-creardb.png)
 
 
-## Crear una colección
+### Crear una colección
 Botón derecho sobre *collections* __Create Collection__
 
 ![crear col](./imgs/Mongo-crearcol.png)
 
 
 ## OPERACIONES CRUD
+
+Como vimos en la teoría, las operaciones de creación, actualización, borrado y consulta de datos son denominadas CRUD (create, read, update, delete) y son similares a las que estamos acostumbrados en los Sistemas Gestores de Bases de Datos tradicionales.
 
 Ejemplo: cómo armar un documento JSON para importar a la base.
 
@@ -81,8 +87,6 @@ Ejemplo:
         "is_retweet" : false,
 ```
 
-El dataset de Tweets está disponible [acá](https://raw.githubusercontent.com/dmuba/dmuba.github.io/master/Practicos/guias/tweets-dolar.json).
-
 d) Utilizar operadores de comparación
 
 ¿Cuantos tweets tienen más de un retweet?
@@ -92,7 +96,7 @@ d) Utilizar operadores de comparación
 db.getCollection('tweets').find({retweet_count: {$gt: 1} })
 
 ```
-Ver otros operadores [aquí](https://docs.mongodb.com/manual/reference/operator/query-comparison/)
+Además, podemos consultar otros operadores de MongoDB [aquí](https://docs.mongodb.com/manual/reference/operator/query-comparison/)
 
 e) Utilizar búsquedas por cadenas
 
@@ -135,4 +139,7 @@ q4 = tweets$aggregate(
 
 
 ```
+
+## Importación de Datos con MongoImport
+
 
