@@ -146,8 +146,16 @@ La herramienta _mongoimport_ es una herramienta de MongoDB que permite importar 
 
 La forma de utilización es mediante el comando _mongoimport_ es la siguiente desde una consola:
 
+Sistemas Operativos UNIX:
 ```javascript
 
 $ mongoimport --host localhost --port 27017 --username user --password "pass" --collection dolar --db twitter --file /home/juan/Escritorio/dolar.json
+
+```
+
+Sistemas Operativos Windows:
+```javascript
+
+> mongoimport --host localhost --port 27017 --collection dolar --db twitter_20190918 --file C:\Users\unlu\dolar.json
 
 ```
