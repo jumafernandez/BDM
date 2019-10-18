@@ -1,4 +1,4 @@
-# Guía LABORATORIO VI: Reglas de asociación con arules
+# Guía LABORATORIO: Reglas de asociación con arules (R)
 
 Vamos a trabajar con la librería __arules__ de R, puntualmente con el dataset Groceries, que representa el típico problema de la cesta de compras.
 
@@ -14,7 +14,7 @@ library(arules)
 ```
 
 ## Carga del dataset
-Cargamos el dataset Groceries con las transacciones de la cesta de compras
+Cargamos el dataset Groceries con las transacciones de la cesta de compras que forma parte de la librería __arules__:
 
 ```r
 data("Groceries")
@@ -106,3 +106,9 @@ Filtramos reglas que contengan **waffles** en el antecedente.
 ```R
 rules.sub <- subset(reglas, subset = lhs %pin% "waffles")
 ```
+
+Hasta aquí, una guía introductoria de reglas de asociación utilizando el paquete arules. Para obtener más información, te recomiendo los siguientes enlaces:
+- https://www.cs.upc.edu/~belanche/Docencia/mineria/Practiques/R/arules.pdf,
+- https://cran.r-project.org/web/packages/arules/index.html,
+- https://rpubs.com/Joaquin_AR/397172,
+- http://r-statistics.co/Association-Mining-With-R.html.
