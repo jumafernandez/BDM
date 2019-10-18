@@ -112,7 +112,7 @@ Hasta aquí, una guía introductoria de reglas de asociación utilizando el paqu
 
 ## Referencias & Recursos Web
 
-Para obtener más información, te recomiendo los siguientes enlaces:
+Para obtener más información, te recomendamos los siguientes enlaces:
 - https://www.cs.upc.edu/~belanche/Docencia/mineria/Practiques/R/arules.pdf,
 - https://cran.r-project.org/web/packages/arules/index.html,
 - https://rpubs.com/Joaquin_AR/397172,
