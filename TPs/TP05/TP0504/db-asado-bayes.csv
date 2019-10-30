@@ -1,0 +1,15 @@
+PRONÓSTICO;TEMPERATURA;HUMEDAD;VIENTO;ASADO
+soleado;36;alta;leve;no
+soleado;28;alta;fuerte;no
+nublado;30;alta;leve;si
+lluvioso;20;alta;leve;si
+lluvioso;2;normal;leve;si
+lluvioso;5;normal;fuerte;no
+nublado;11;normal;fuerte;si
+soleado;22;alta;leve;no
+soleado;9;normal;leve;si
+lluvioso;17;normal;leve;si
+soleado;19;normal;fuerte;si
+nublado;22;alta;fuerte;si
+nublado;27;normal;leve;si
+lluvioso;21;alta;fuerte;no
